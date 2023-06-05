@@ -1,0 +1,38 @@
+<app-header-v2></app-header-v2>
+<div class="main">
+    <h3 style="text-align: center; font-size: 40px;">Tạo test</h3>
+    <form [formGroup]="formCreateTest">
+        <div class="form-group">
+            <label>Số lượng câu hỏi
+              <input type="number" value="0" name="questionCount" formControlName="questionCount">
+            </label>
+            <label>Thời gian làm bài (phút):
+              <input type="number" value="" name ="time" formControlName="time" min="0" max ="4320">
+            </label>
+            <br>
+            <label>Ẩn câu trả lời
+              <input type="checkbox" value="false" name="hideAnswer" formControlName="hideAnswer">
+            </label>
+            <label style="margin-left: 20px;">Đảo thứ tự câu hỏi
+              <input type="checkbox" value="false" name ="shuffleQuestion" formControlName="shuffleQuestion">
+            </label>
+            <br>
+            <label>Bắt đầu
+              <input type="datetime-local"name="startAt" formControlName="startAt">
+            </label>
+            <label>Kết thúc
+              <input type="datetime-local" name ="endAt" formControlName="endAt">
+            </label>
+            <br>
+            <label>Mật khẩu ca thi
+              <input type="text" minlength="3" maxlength="30" name ="password" formControlName="password">
+            </label>
+            <br>
+            <button type="submit" (click)="submit()" class="btn btn-outline-danger" style="margin-bottom: 10px;">Tạo</button>
+            <br>
+            <a [routerLink]="['/exam/']" routerLinkActive="router-link-active" class="btn btn-outline-danger">Back</a>
+        </div>
+    </form>
+    <app-notification></app-notification>
+</div>
+<app-footer></app-footer>

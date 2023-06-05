@@ -1,0 +1,25 @@
+version: '3.4'
+services:
+  be:
+    container_name: pbl4be-dev
+    image: pbl4be-dev
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+    build:
+      context: .
+      target: development
+    ports: 
+      - 5000:5000
+    volumes:
+      - .:/src
+  fe:
+    container_name: pbl4fe-dev
+    image: pbl4fe-dev
+    build: 
+      context: ./PBL4.FE
+      target: development
+    ports:
+      - 4201:4200
+      # - 49153:49153
+    volumes:
+      - ./PBL4.FE/src:/src/src

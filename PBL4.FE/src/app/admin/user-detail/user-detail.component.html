@@ -1,0 +1,144 @@
+<app-header-v2></app-header-v2>
+<html lang="en">
+
+<body>
+    <div>
+        <div class="main-face">
+            <div class="ava-block">
+                <div>
+                    <img src="https://placeimg.com/150/150/any" alt="avatar">
+                </div>
+                <div class="name">
+                    <h3>I am {{data.userName}}</h3>
+                    <h4>Graphic/Web Designer</h4>
+                </div>
+            </div>
+        </div>
+        <div style="padding-left: 13%; padding-right: 13%;">
+            <div class="about">
+                <ul>
+                    <li>
+                        <p><i class="fas fa-user-circle"></i>. User Name</p>
+                        <p>{{data.userName}}</p>
+                    </li>
+                    <li>
+                        <p><i class="fas fa-birthday-cake"></i>. Birthdate</p>
+                        <p>{{data.dateOfBirth}}</p>
+                    </li>
+                    <li>
+                        <p><i class="fas fa-exclamation-circle"></i>. Email</p>
+                        <p>{{data.email}}</p>
+                    </li>
+                </ul>
+                <br>
+                <ul>
+                    <li>
+                        <p>FirstName</p>
+                        <p>{{data.firstName}}</p>
+                    </li>
+                    <li>
+                        <p>LastName</p>
+                        <p>{{data.lastName}}</p>
+                    </li>
+                    <li>
+                        <p>Tên lớp</p>
+                        <p>{{data.className}}</p>
+                    </li>
+                </ul>
+                <br>
+                <ul>
+                    <li>
+                        <p>Role: </p>
+                        <div *ngFor="let role of data.listRoles">
+                            <p>{{role.roleName}}</p>
+                        </div>
+                    </li>
+                    <li>
+                        <p>Giới tính</p>
+                        <p>{{data.gender}}</p>
+                    </li>
+                    <li>
+                        <p>Trạng thái</p>
+                        <p>{{data.isBlock}}</p>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
+<div *ngIf="dem2 > 0">
+    <h2>Danh sách đề thi đã tạo</h2>
+    <table class="table-bordered table-hover" style="font-weight:500">
+        <tr>
+            <td>Mã đề thi</td>
+            <td>Tiêu đề</td>
+            <td>Trạng thái</td>
+            <td>Số câu hỏi</td>
+            <td>thời gian làm bài</td>
+        </tr>
+        <tr *ngFor="let exam of data.listExams">
+            <td>{{exam.id}}</td>
+            <td>{{exam.title}}</td>
+            <td>{{exam.isPublic}}</td>
+            <td>{{exam.questionCount}}</td>
+            <td>{{exam.time}} phút</td>
+        </tr>
+    </table>
+</div>
+
+<div *ngIf="dem1 > 0">
+    <h2>Danh sách cuộc thi đã tạo</h2>
+    <table class="table-bordered table-hover" style="font-weight:500">
+        <thead>
+            <td>Mã test</td>
+            <td>Tiêu đề</td>
+            <td>Thời gian bắt đầu</td>
+            <td>Thời gian kết thúc</td>
+            <td>Số câu hỏi</td>
+            <td>Thời gian làm bài</td>
+            <td>Mật khẩu ca thi</td>
+            <td>Số người làm</td>
+        </thead>
+        <tr *ngFor="let test of data.listTestCreate">
+            <td>{{test.testId}}</td>
+            <td>{{test.title}}</td>
+            <td>{{test.startAt}}</td>
+            <td>{{test.endAt}}</td>
+            <td>{{test.questionCount}}</td>
+            <td>{{test.time}} phút</td>
+            <td>{{test.password}}</td>
+            <td>{{test.countDo}}</td>
+        </tr>
+    </table>
+</div>
+
+<div *ngIf="dem > 0">
+    <h2>Danh sách đề thi đã làm</h2>
+    <table class="table-bordered table-hover" style="font-weight:500">
+        <thead>
+            <td>Mã test</td>
+            <td>Tiêu đề</td>
+            <td>Giáo viên</td>
+            <td>Thời gian bắt đầu</td>
+            <td>Thời gian kết thúc</td>
+            <td>Số câu hỏi</td>
+            <td>Thời gian làm bài</td>
+            <td>Mật khẩu ca thi</td>
+            <td>Điểm</td>
+        </thead>
+        <tr *ngFor="let test of data.listTestDid">
+            <td>{{test.testId}}</td>
+            <td>{{test.title}}</td>
+            <td>{{test.createBy}}</td>
+            <td>{{test.startAt}}</td>
+            <td>{{test.endAt}}</td>
+            <td>{{test.questionCount}}</td>
+            <td>{{test.time}} phút</td>
+            <td>{{test.password}}</td>
+            <td>{{test.point}}</td>
+        </tr>
+    </table>
+</div>
+<app-footer></app-footer>

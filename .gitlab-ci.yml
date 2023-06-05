@@ -1,0 +1,48 @@
+variables:
+  PROJECT_NAME: "TracNghiem.API"
+  BUILD_IMAGE: "mcr.microsoft.com/dotnet/sdk:5.0"
+  RUNTIME_IMAGE: "mcr.microsoft.com/dotnet/aspnet:5.0"
+
+stages:
+  - test
+  - build
+  - deploy
+  - notify
+
+test:
+  tags: 
+    - tracnghiem  
+  stage: test
+  script:
+    - whoami
+    - hostname
+
+build:
+  tags: 
+    - tracnghiem        
+  stage: build    
+  # image: docker:latest
+  # services:
+  #   - docker:dind
+  script:
+    - docker build -t $CI_REGISTRY_IMAGE:$CI_COMMIT_BRANCH-latest	. 
+    - docker push $CI_REGISTRY_IMAGE:$CI_COMMIT_BRANCH-latest
+  only:
+    - develop
+    - main
+
+    
+notify_success:
+  stage: notify
+  script:
+  - sh .ci-notify.sh ✅
+  when: on_success #deploy fail
+notify_error:
+  stage: notify
+  script:
+  - sh .ci-notify.sh ❌
+  when: on_failure #deploy fail
+
+
+
+

@@ -1,0 +1,45 @@
+<app-header-v2></app-header-v2>
+<div style="width: 100%; height: 100%;">
+    <div style="margin: 0 auto; padding: 60px; font-size: 40px; width: 600px;" *ngIf="result == undefined">
+        <label for=""> Nhập mật khẩu ca thi
+          <input class="form-control" type="text" name = "password" placeholder="Mật khẩu" [(ngModel)]="passWord">
+          <button class="btn btn-primary" style="padding: 5px 8px; font-size: 21px;" (click)="CheckPass()">Check</button>
+      </label>
+        <app-notification></app-notification>
+    </div>
+
+    <body style="margin: 100px auto; font-size: 40px;">
+        <div *ngIf="result != undefined">
+            <table class="table-bordered table-hover" style="font-weight:700">
+                <thead>
+                    <tr>
+                        <td>Title</td>
+                        <td>Student name</td>
+                        <td>Create by</td>
+                        <td>Start At</td>
+                        <td>End At</td>
+                        <td>Time</td>
+                        <td>Time remain</td>
+                        <td>Status</td>
+                        <td>Question Count</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>{{result.result.data.title}}</td>
+                        <td>{{result.result.data.studentName}}</td>
+                        <td>{{result.result.data.createBy}}</td>
+                        <td>{{result.result.data.startAt}}</td>
+                        <td>{{result.result.data.endAt}}</td>
+                        <td>{{result.result.data.time}}</td>
+                        <td>{{result.result.data.timeRemain}}</td>
+                        <td>{{result.result.data.status}}</td>
+                        <td>{{result.result.data.questionCount}}</td>
+                    </tr>
+                </tbody>
+            </table>
+            <button type="button" class="btn btn-primary" (click)="doTest()" style="margin-left: 8px;"> Bắt đầu làm bài</button>
+        </div>
+    </body>
+</div>
+<app-footer></app-footer>

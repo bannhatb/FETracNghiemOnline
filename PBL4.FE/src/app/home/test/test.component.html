@@ -1,0 +1,46 @@
+<app-header-v2></app-header-v2>
+<h2 style="margin: 80px 0 20px 410px; font-size: 40px;">Danh sách bài thi</h2>
+<app-search [textSearch]="urlQuery.keyword" (search)="getListTest($event)"></app-search>
+<table class="table-bordered table-hover" style="font-weight:500">
+    <thead>
+        <tr>
+            <td>Id</td>
+            <td>Tiêu đề</td>
+            <td>Tác giả</td>
+            <td>Bắt đầu lúc</td>
+            <td>Kết thúc lúc</td>
+            <td>Thời gian làm bài</td>
+            <td>Số lượng câu hỏi</td>
+            <td>Thi</td>
+        </tr>
+    </thead>
+    <tbody *ngIf="total == 0">
+        <tr>
+            <td colspan="3">Hiện chưa có bài thi nào</td>
+        </tr>
+    </tbody>
+    <tbody *ngIf="total  >0">
+        <tr *ngFor="let item of test">
+            <td>{{item.testId}}</td>
+            <td>{{item.title}}</td>
+            <td>{{item.createBy}}</td>
+            <td>{{item?.startAt}}</td>
+            <td>{{item?.endAt}}</td>
+            <td>{{item.time}}</td>
+            <td>{{item.questionCount}}</td>
+            <td>
+                <a [routerLink]="['/test/user-test/'+item.testId]" routerLinkActive="router-link-active" class="btn btn-primary">
+                  Bắt đầu làm bài
+              </a>
+                <a [routerLink]="['/test/user-point/'+item.testId]" routerLinkActive="router-link-active" class="btn btn-info">
+                Xem điểm
+            </a>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+<div *ngIf="TotalPage > 1">
+    <app-paging [totalPage]="TotalPage" [currentPage]="urlQuery.pageNumber" (changePage)="ChangePageHandler($event)"></app-paging>
+</div>
+<app-footer></app-footer>

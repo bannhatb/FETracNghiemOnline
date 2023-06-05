@@ -1,0 +1,25 @@
+<app-header-v2></app-header-v2>
+<div class="main">
+    <form [formGroup]="formAddQuestion">
+        <div class="form-group">
+            <label>Một lựa chọn
+            <input type="radio" value="true" name="questionType" formControlName="questionType">
+            </label>
+            <label style="margin-left: 20px;">Nhiều lựa chọn
+                <input type="radio" value="false" name ="questionType" formControlName="questionType" >
+            </label>
+            <br>
+            <label>
+              Nội dung câu hỏi
+                <input type="text" formControlName="questionContent">
+            </label>
+            <br>
+            <label for="">
+             Danh sách câu trả lời
+            </label>
+        </div>
+        <!-- trả về đề thi trước khi thêm -->
+        <!-- <a [routerLink]="['/exam/']" routerLinkActive="router-link-active" class="btn btn-outline-warning">Hủy</a> -->
+    </form>
+</div>
+<app-footer></app-footer>

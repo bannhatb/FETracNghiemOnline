@@ -1,0 +1,41 @@
+<div style="background-image:url(../../../assets/img/bgsignup.jpg)">
+  <div>
+    <h1>
+      Đăng nhập
+    </h1>
+  </div>
+  <div class="login">
+    <!-- <div class="left-register">
+          <h2>OFFICIAL</h2>
+          <p>Register.</p>
+      </div> -->
+    <div class="form-login">
+      <div>
+        <div>
+          <form (ngSubmit)="onSubmit()">
+            <input type="text" [(ngModel)]="username" name="username" placeholder="Username">
+            <input type="password" [(ngModel)]="password" name="password" placeholder="Password">
+            <button type="submit">Login</button>
+            <a routerLink="/auth/register">
+              <p style="margin-top: 12px; font-size: 20px;">Register</p>
+            </a>
+          </form>
+        </div>
+        <div>
+          <p style="color: aqua;">Fast Login With Your Favourite Social Profile</p>
+        </div>
+        <div>
+          <div>
+            <div class="icon-contact">
+              <div class="face"><a href="#"><i class="fab fa-facebook-f" style="color: #FFF;"></i></a></div>
+              <div class="yt"><a href="#"><i class="fab fa-youtube" style="color: #FFF;"></i></a></div>
+              <div class="tw"><a href="#"><i class="fab fa-twitter" style="color: #FFF;"></i></a></div>
+              <div class="gg"><a href="#"><i class="fab fa-google-plus-g" style="color: #FFF;"></i></a></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<app-notification></app-notification>

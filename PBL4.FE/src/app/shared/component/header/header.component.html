@@ -1,0 +1,55 @@
+<header id="header" class="transparent-nav">
+    <div class="container" style="height: 100%;">
+
+        <div class="navbar-header">
+            <div class="">
+                <!-- Logo -->
+                <div class="navbar-brand">
+                    <a class="logo" href="#">
+                        <img src="../../assets/img/logo-small.png" alt="logo">
+                    </a>
+                </div>
+                <!-- /Logo -->
+
+                <!-- Mobile toggle -->
+                <!-- <button class="navbar-toggle">
+          <span></span>
+        </button> -->
+                <!-- /Mobile toggle -->
+            </div>
+
+            <!-- Navigation -->
+            <nav id="nav">
+                <ul class="main-menu nav navbar-nav navbar-right">
+                    <li><a href="/">Trang chủ</a></li>
+                    <li><a [routerLink]="['/test/']">Bài thi</a></li>
+                    <li><a [routerLink]="['/exam/']">Đề thi</a></li>
+                    <li><a [routerLink]="['/admin/user/']">Admin</a></li>
+                    <li *ngIf="check== false"><a [routerLink]="['/auth/login']">Đăng nhập</a></li>
+                    <li *ngIf="check== true"><a (click)="logout1()">Đăng xuất</a></li>
+                </ul>
+            </nav>
+        </div>
+
+    </div>
+</header>
+
+<div id="home" class="hero-area">
+
+    <!-- Backgound Image -->
+    <div class="bg-image bg-parallax overlay" style="background-image:url(../assets/img/background.jpg)"></div>
+    <!-- /Backgound Image -->
+
+    <div class="home-wrapper">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-8">
+                    <h1 class="white-text">Một website phục vụ thi trắc nghiệm online</h1>
+                    <p class="lead white-text">Bản quyền thuộc đại học Bách Khoa Đà Nẵng.</p>
+                    <a class="main-button icon-button" href="#">Go!</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
