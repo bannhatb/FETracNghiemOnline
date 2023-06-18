@@ -46,9 +46,9 @@
     <div *ngIf="total == 0">
             <p colspan="3">Hiện chưa có bài thi nào</p>
     </div>
-    <div *ngIf="total  >0" class="d-flex row flex-wrap justify-content-between">
+    <div *ngIf="total  >0" class="d-flex row flex-wrap justify-content-around">
         <div *ngFor="let item of test">
-            <div class="card shadow-lg" style="width:400px">
+            <div class="card shadow-lg mb-4" style="width:400px">
                 <img class="card-img-top" src="https://storage.tracnghiem.vn/public/trac-nghiem-ngoai-ngu.jpg" alt="Card image" style="width:100%">
                 <div class="card-body">
                     <h4 class="card-title">{{item.title}}</h4>
