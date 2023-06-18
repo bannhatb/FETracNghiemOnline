@@ -1,4 +1,4 @@
-<app-header-v2></app-header-v2>
+<app-header></app-header>
 <!-- <h2>Danh sách đề thi</h2>
 <app-search [textSearch]="urlQuery.keyword" (search)="GetListExamCreateCurrentUser($event)"></app-search> -->
 <!-- <table class="table-bordered table-hover" style="font-weight: 500;">
@@ -80,9 +80,9 @@
     <div *ngIf="Total == 0">
             <p colspan="3">Hiện chưa có bài thi nào</p>
     </div>
-    <div *ngIf="Total > 0" class="d-flex row flex-wrap justify-content-between">
+    <div *ngIf="Total > 0" class="d-flex row flex-wrap justify-content-around">
         <div *ngFor="let item of ListExam">
-            <div class="card shadow-lg" style="width:400px">
+            <div class="card shadow-lg mb-4"  style="width:400px">
                 <img class="card-img-top" src="https://storage.tracnghiem.vn/public/trac-nghiem-ngoai-ngu.jpg" alt="Card image" style="width:100%">
                 <div class="card-body">
                     <h4 class="card-title">{{item.title}}</h4>

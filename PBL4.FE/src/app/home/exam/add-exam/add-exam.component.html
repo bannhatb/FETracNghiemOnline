@@ -35,34 +35,35 @@
     </form>
 </div> -->
 <div class="total shadow-lg mt-6">
-  <form [formGroup]="formAddExam">
-      <div class="form-inline form-group">
-        <label>Tiêu đề: </label>
-        <input type="text" value="" name="Title" formControlName="Title">
+  <form [formGroup]="formAddExam" class="">
+      <div class=" form-group row align-items-center">
+        <label class="col-3">Tiêu đề: </label>
+        <input type="text" value="" name="Title" formControlName="Title" class="form-control col-9">
       </div>
-      <div class="form-inline form-group">
-        <label>Thời gian làm bài (phút):</label>
-        <input type="number" value="" name ="Time" formControlName="Time" min="0" max ="4320">
+      <div class=" form-group row align-items-center">
+        <label class="col-3">Thời gian làm bài (phút):</label>
+        <input type="number" value="" name ="Time" formControlName="Time" min="0" max ="4320" class="form-control col-9">
       </div>
-      <div class="form-inline form-group">
-        <label for="LevelId" style="margin-right: 5px;">Mức độ:</label>
-        <select name="LevelId" formControlName="LevelId">
+      <div class=" form-group row align-items-center">
+        <label class="col-3" for="LevelId">Mức độ:</label>
+        <select name="LevelId" formControlName="LevelId" class="form-control col-9">
           <option value="1">Dễ</option>
           <option value="2">Trung bình</option>
           <option value="3">Khó</option>
         </select>
       </div>
-      <div class="form-inline form-group">
-        <label>Công khai: </label>
-        <input type="checkbox" name="IsPublic" formControlName="IsPublic" value="false">
-      </div>
-      <div class="form-inline form-group">
-        <label for="">
+      <div class=" form-group row align-items-center">
+        <label class="col-3" for="">
           Loại đề thi:
         </label>
-        <select name="Categories" formControlName="Categories" (change)="newCategory($event)" >
+        <select name="Categories" formControlName="Categories" (change)="newCategory($event)"  class="form-control col-9">
           <option *ngFor="let ca of listCategory.result.items" [value]="ca.id">{{ca.categoryName}}</option>
         </select>
+      </div>
+      <div class=" form-group row align-items-center">
+        <label class="col-3">Công khai: </label>
+        <input type="checkbox" name="IsPublic" formControlName="IsPublic" value="false" >
+        
       </div>
       <div class="d-flex justify-content-around ">
         <button class="btn btn-outline-primary " type="submit" (click)="CreateExam()">Tạo Exam</button>
