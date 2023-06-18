@@ -107,9 +107,14 @@
                   <label class="mont-font fw-600 font-xsss text-grey-700">
                     Role:
                   </label>
-                  <div *ngFor="let role of data.listRoles">
-                      <input class="form-control" type="text" name="" value={{role.roleName}} readonly>
-                  </div>
+
+
+                  <ul class="list-inline text-start p-2 rounded border" style="background-color:#e9ecef;x1" >
+                    <li *ngFor="let role of data.listRoles" class="list-inline-item ">
+                      {{ role.roleName }}
+                    </li>
+                  </ul>
+
 
 
 
@@ -145,38 +150,38 @@
 </body>
 
 </html>
-<div *ngIf="dem2 > 0">
-    <h2>Danh sách đề thi đã tạo</h2>
-    <table class="table-bordered table-hover" style="font-weight:500">
-        <tr>
-            <td>Mã đề thi</td>
-            <td>Tiêu đề</td>
-            <td>Trạng thái</td>
-            <td>Số câu hỏi</td>
-            <td>thời gian làm bài</td>
+<div *ngIf="dem2 > 0" class="p-20">
+    <h4 class="fw-600 text-grey-700" >Danh sách đề thi đã tạo</h4>
+    <table class="table-bordered table-hover px-10" style="font-weight:400">
+        <tr >
+            <td >Mã đề thi</td>
+            <td >Tiêu đề</td>
+            <td >Trạng thái</td>
+            <td >Số câu hỏi</td>
+            <td >thời gian làm bài</td>
         </tr>
         <tr *ngFor="let exam of data.listExams">
-            <td>{{exam.id}}</td>
-            <td>{{exam.title}}</td>
-            <td>{{exam.isPublic}}</td>
-            <td>{{exam.questionCount}}</td>
-            <td>{{exam.time}} phút</td>
+            <td  >{{exam.id}}</td>
+            <td >{{exam.title}}</td>
+            <td >{{exam.isPublic}}</td>
+            <td >{{exam.questionCount}}</td>
+            <td >{{exam.time}} phút</td>
         </tr>
     </table>
 </div>
 
-<div *ngIf="dem1 > 0">
-    <h2>Danh sách cuộc thi đã tạo</h2>
-    <table class="table-bordered table-hover" style="font-weight:500">
+<div *ngIf="dem1 > 0" class="p-20">
+    <h4 class="fw-600 text-grey-700" >Danh sách cuộc thi đã tạo</h4>
+    <table class="table-bordered table-hover" style="font-weight:400">
         <thead>
-            <td>Mã test</td>
+            <td >Mã test</td>
             <td>Tiêu đề</td>
             <td>Thời gian bắt đầu</td>
             <td>Thời gian kết thúc</td>
             <td>Số câu hỏi</td>
             <td>Thời gian làm bài</td>
             <td>Mật khẩu ca thi</td>
-            <td>Số người làm</td>
+            <td >Số người làm</td>
         </thead>
         <tr *ngFor="let test of data.listTestCreate">
             <td>{{test.testId}}</td>
@@ -191,9 +196,9 @@
     </table>
 </div>
 
-<div *ngIf="dem > 0">
-    <h2>Danh sách đề thi đã làm</h2>
-    <table class="table-bordered table-hover" style="font-weight:500">
+<div *ngIf="dem > 0" class="p-20">
+    <h4 class="fw-600 text-grey-700" >Danh sách đề thi đã làm</h4>
+    <table class="table-bordered table-hover" style="font-weight:400;">
         <thead>
             <td>Mã test</td>
             <td>Tiêu đề</td>
