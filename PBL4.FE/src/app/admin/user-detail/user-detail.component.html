@@ -3,67 +3,144 @@
 
 <body>
     <div>
-        <div class="main-face">
-            <div class="ava-block">
-                <div>
-                    <img src="https://placeimg.com/150/150/any" alt="avatar">
+      <div class="main-face">
+        <div class="ava-block  ">
+            <div>
+                <img class="pt-3" src="https://cdn3.iconfinder.com/data/icons/essential-rounded/64/Rounded-31-512.png" alt="avatar">
+            </div>
+
+        </div>
+    </div>
+
+        <div class="card-body px-20">
+            <h4 class="fw-600 text-grey-700" >
+                Thông tin tài khoản
+            </h4>
+
+            <div class="w-100 ">
+                <div class="row">
+                    <div class="col-lg-6  ">
+                      <div class="form-group">
+                        <label class="mont-font fw-600 font-xsss text-grey-700">
+                          Username:
+                        </label>
+
+                        <input class="form-control" type="text" name="" value={{data.userName}} readonly>
+                      </div>
+                    </div>
+
+
+                    <div class="col-lg-6  ">
+                      <div class="form-group">
+                        <label class="mont-font fw-600 font-xsss text-grey-700">
+                          Class:
+                        </label>
+
+                        <input class="form-control" type="text" name="" value={{data.className}} readonly>
+                      </div>
+
+                    </div>
                 </div>
-                <div class="name">
-                    <h3>I am {{data.userName}}</h3>
-                    <h4>Graphic/Web Designer</h4>
+
+
+                <div class="row">
+                  <div class="col-lg-6  ">
+                    <div class="form-group">
+                      <label class="mont-font fw-600 font-xsss text-grey-700">
+                        FirstName:
+                      </label>
+
+                      <input class="form-control" type="text" name="" value={{data.firstName}} readonly>
+                    </div>
+                  </div>
+
+
+                  <div class="col-lg-6  ">
+                    <div class="form-group">
+                      <label class="mont-font fw-600 font-xsss text-grey-700">
+                        LastName:
+                      </label>
+
+                      <input class="form-control" type="text" name="" value={{data.lastName}} readonly>
+                    </div>
+                  </div>
+              </div>
+
+
+              <div class="row">
+                <div class="col-lg-6  ">
+                  <div class="form-group">
+                    <label class="mont-font fw-600 font-xsss text-grey-700">
+                      Birthday:
+                    </label>
+
+                    <input class="form-control" type="text" name="" value={{data.dateOfBirth}} readonly>
+                  </div>
+                </div>
+
+
+                <div class="col-lg-6  ">
+                  <div class="form-group">
+                    <label class="mont-font fw-600 font-xsss text-grey-700">
+                      Gender:
+                    </label>
+
+                    <input class="form-control" type="text" name="" value={{data.gender}} readonly>
+                  </div>
                 </div>
             </div>
-        </div>
-        <div style="padding-left: 13%; padding-right: 13%;">
-            <div class="about">
-                <ul>
-                    <li>
-                        <p><i class="fas fa-user-circle"></i>. User Name</p>
-                        <p>{{data.userName}}</p>
-                    </li>
-                    <li>
-                        <p><i class="fas fa-birthday-cake"></i>. Birthdate</p>
-                        <p>{{data.dateOfBirth}}</p>
-                    </li>
-                    <li>
-                        <p><i class="fas fa-exclamation-circle"></i>. Email</p>
-                        <p>{{data.email}}</p>
-                    </li>
-                </ul>
-                <br>
-                <ul>
-                    <li>
-                        <p>FirstName</p>
-                        <p>{{data.firstName}}</p>
-                    </li>
-                    <li>
-                        <p>LastName</p>
-                        <p>{{data.lastName}}</p>
-                    </li>
-                    <li>
-                        <p>Tên lớp</p>
-                        <p>{{data.className}}</p>
-                    </li>
-                </ul>
-                <br>
-                <ul>
-                    <li>
-                        <p>Role: </p>
-                        <div *ngFor="let role of data.listRoles">
-                            <p>{{role.roleName}}</p>
-                        </div>
-                    </li>
-                    <li>
-                        <p>Giới tính</p>
-                        <p>{{data.gender}}</p>
-                    </li>
-                    <li>
-                        <p>Trạng thái</p>
-                        <p>{{data.isBlock}}</p>
-                    </li>
-                </ul>
+
+            <div class="row">
+              <div class="col-lg-6  ">
+                <div class="form-group">
+                  <label class="mont-font fw-600 font-xsss text-grey-700">
+                    Email:
+                  </label>
+
+                  <input class="form-control" type="text" name="" value={{data.email}} readonly>
+                </div>
+              </div>
+
+
+              <div class="col-lg-6  ">
+                <div class="form-group">
+                  <label class="mont-font fw-600 font-xsss text-grey-700">
+                    Role:
+                  </label>
+                  <div *ngFor="let role of data.listRoles">
+                      <input class="form-control" type="text" name="" value={{role.roleName}} readonly>
+                  </div>
+
+
+
+
+                </div>
+              </div>
+          </div>
+
+
+          <div class="row">
+            <div class="col-lg-6  ">
+              <div class="form-group">
+                <label class="mont-font fw-600 font-xsss text-grey-700">
+                  Status:
+                </label>
+
+                <input class="form-control" type="text" name="" value={{data.isBlock}} readonly>
+              </div>
             </div>
+
+
+
         </div>
+
+
+
+
+            </div>
+
+        </div>
+
     </div>
 </body>
 
