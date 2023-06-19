@@ -1,10 +1,10 @@
-<app-header-v2></app-header-v2>
+<app-header></app-header>
 <div class="main">
     <h3>Kết quả cuộc thi</h3>
     <p>Số người làm: {{data.total}}</p>
     <app-search [textSearch]="urlQuery.keyword" (search)="GetTestAnalysisResult($event)"></app-search>
     <label for="">
-      Lớp: ...
+      Lớp: 
       <select #selectClass [(ngModel)]="classId" (ngModelChange)="ChangeClass($event)">
         <option value="-1">All</option>
         <option *ngFor="let cl of classData" value="{{cl.id}}">{{cl.name}}</option>

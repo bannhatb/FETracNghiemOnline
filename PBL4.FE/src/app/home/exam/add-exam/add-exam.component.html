@@ -1,5 +1,5 @@
 <app-header-v2></app-header-v2>
-<div class="total">
+<!-- <div class="total shadow-lg mt-6">
     <form [formGroup]="formAddExam">
         <div class="form-group ">
             <label>Tiêu đề:
@@ -27,10 +27,48 @@
               </select>
             </label>
             <br>
-            <button class="btn btn-outline-primary" type="submit" (click)="CreateExam()" style="margin-bottom: 10px;">Tạo Exam</button>
-            <br>
-            <button type="submit" name="back" class="btn btn-outline-danger" [routerLink]="['/exam/']">Hủy</button>
-        </div>
+            <div class="d-flex justify-content-around ">
+              <button class="btn btn-outline-primary " type="submit" (click)="CreateExam()">Tạo Exam</button>
+              <button type="submit" name="back" class="btn btn-outline-danger del" [routerLink]="['/exam/']">Hủy</button>
+            </div>
+          </div>
     </form>
+</div> -->
+<div class="total shadow-lg mt-6">
+  <form [formGroup]="formAddExam" class="">
+      <div class=" form-group row align-items-center">
+        <label class="col-3">Tiêu đề: </label>
+        <input type="text" value="" name="Title" formControlName="Title" class="form-control col-9">
+      </div>
+      <div class=" form-group row align-items-center">
+        <label class="col-3">Thời gian làm bài (phút):</label>
+        <input type="number" value="" name ="Time" formControlName="Time" min="0" max ="4320" class="form-control col-9">
+      </div>
+      <div class=" form-group row align-items-center">
+        <label class="col-3" for="LevelId">Mức độ:</label>
+        <select name="LevelId" formControlName="LevelId" class="form-control col-9">
+          <option value="1">Dễ</option>
+          <option value="2">Trung bình</option>
+          <option value="3">Khó</option>
+        </select>
+      </div>
+      <div class=" form-group row align-items-center">
+        <label class="col-3" for="">
+          Loại đề thi:
+        </label>
+        <select name="Categories" formControlName="Categories" (change)="newCategory($event)"  class="form-control col-9">
+          <option *ngFor="let ca of listCategory.result.items" [value]="ca.id">{{ca.categoryName}}</option>
+        </select>
+      </div>
+      <div class=" form-group row align-items-center">
+        <label class="col-3">Công khai: </label>
+        <input type="checkbox" name="IsPublic" formControlName="IsPublic" value="false" >
+        
+      </div>
+      <div class="d-flex justify-content-around ">
+        <button class="btn btn-outline-primary " type="submit" (click)="CreateExam()">Tạo Exam</button>
+        <button type="submit" name="back" class="btn btn-outline-danger del" [routerLink]="['/exam/']">Hủy</button>
+      </div>
+  </form>
 </div>
 <app-footer></app-footer>
