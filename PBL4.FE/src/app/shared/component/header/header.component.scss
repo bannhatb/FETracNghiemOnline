@@ -296,22 +296,22 @@ Navigation
     height: 4em;
 }
 
-#header.transparent-nav .main-menu li a {
+div ul li a {
     color: #FFF;
 }
 
-.main-menu li a {
+div ul li a {
     text-transform: uppercase;
     -webkit-transition: 0.2s all;
     transition: 0.2s all;
 }
 
-.main-menu li a:hover,
-.main-menu li a:focus {
+div ul li a:hover,
+div ul li a:focus {
     background-color: transparent;
 }
 
-.main-menu li a:after {
+div ul li a:after {
     content: "";
     display: block;
     height: 2px;
@@ -325,8 +325,8 @@ Navigation
     transition: 0.2s all;
 }
 
-.main-menu li a:hover:after,
-.main-menu li a:focus:after {
+div ul li a:hover:after,
+div ul li a:focus:after {
     -webkit-transform: translateY(0px);
     -ms-transform: translateY(0px);
     transform: translateY(0px);
@@ -362,10 +362,10 @@ Navigation
         -ms-transform: translateX(0%);
         transform: translateX(0%);
     }
-    .main-menu {
+    div ul {
         margin: 0;
     }
-    .main-menu li a {
+    div ul li a {
         color: #374050 !important;
         display: inline-block;
         margin-left: 40px;
@@ -605,7 +605,9 @@ About & Why Us (Feature)
     opacity: 0.7;
 }
 
-
+.my-drop-box {
+    z-index: 100;
+  }
 /*------------------------------------*\
 Courses
 \*------------------------------------*/
@@ -1459,3 +1461,44 @@ Preloader
         transform: rotate(360deg);
     }
 }
+/* CSS cho dropdown */
+.dropdown {
+    position: relative;
+    display: inline-block;
+  }
+  
+  .dropbtn {
+    background-color: #ffffff;
+    color: #333;
+    padding: 8px;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+  }
+  
+  .dropdown-content a {
+    color: #333;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+  }
+  
+  .dropdown-content a:hover {
+    background-color: #ddd;
+  }
+  
+  .dropdown:hover .dropdown-content {
+    display: block;
+  }
+  
+  .dropdown:hover .dropbtn {
+    background-color: #ccc;
+  }

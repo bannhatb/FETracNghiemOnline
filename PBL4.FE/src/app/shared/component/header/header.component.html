@@ -1,14 +1,13 @@
-<header id="header" class="transparent-nav bg-dark">
+<!-- <header id="header" class="transparent-nav bg-dark">
     <div class="container" style="height: 100%;">
 
         <div class="navbar-header">
             <div class="">
-                <!-- Logo -->
                 <div class="navbar-brand">
                     <a class="logo" href="#">
                         <img src="../../assets/img/logo-small.png" alt="logo">
                     </a>
-                </div>
+                </div> -->
                 <!-- /Logo -->
 
                 <!-- Mobile toggle -->
@@ -16,24 +15,42 @@
           <span></span>
         </button> -->
                 <!-- /Mobile toggle -->
-            </div>
+            <!-- </div> -->
 
             <!-- Navigation -->
-            <nav id="nav">
+            <!-- <nav id="nav">
                 <ul class="main-menu nav navbar-nav navbar-right">
                     <li><a href="/">Trang chủ</a></li>
                     <li><a [routerLink]="['/test/']">Bài thi</a></li>
                     <li><a [routerLink]="['/exam/']">Đề thi</a></li>
                     <li><a [routerLink]="['/admin/user/']">Admin</a></li>
-                    <li *ngIf="check== false"><a [routerLink]="['/auth/login']">Đăng nhập</a></li>
-                    <li *ngIf="check== true"><a (click)="logout1()">Đăng xuất</a></li>
+                    <li *ngIf="check== false"><a [routerLink]="['/auth/login']">Đăng nhập</a></li> -->
+                    <!-- <li *ngIf="check== true"><a (click)="logout1()">Hi, {{userName.result.data}} </a></li> -->
+                    <!-- <li *ngIf="check== true"><a >Hi, {{userName.result.data}} </a></li> -->
+                    <!-- <div>
+                        đăng xuất
+                        Ngân hàng câu hỏi
+                        Ngân hàng đề thi
+                    </div> -->
+                    <!-- <li *ngIf="check== true" class="nav-item dropdown ">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Hi, {{userName.result.data}}
+                        </a>
+                        <ul class="dropdown-menu my-drop-box">
+                          <li><a class="dropdown-item" href="#">Action</a></li>
+                          <li><a class="dropdown-item" href="#">Another action</a></li>
+                          <li><hr class="dropdown-divider"></li>
+                          <li><a class="dropdown-item" href="#">Something else here</a></li>
+                        </ul>
+                      </li>
+
                 </ul>
             </nav>
         </div>
 
     </div>
 </header>
-<div style="margin-bottom: 80px;"></div>
+<div style="margin-bottom: 80px;"></div> -->
 
 <!-- <div id="home" class="hero-area"> -->
 
@@ -54,3 +71,34 @@
     </div> -->
 
 <!-- </div> -->
+
+<nav class="navbar navbar-expand-lg bg-body-tertiary bg-dark">
+    <div class="container-fluid">
+        <img src="../../assets/img/logo-small.png" alt="logo">
+      <!-- <button href="/" class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button> -->
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a [routerLink]="['/test/']" class="nav-link active" aria-current="page" href="#">Test</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" [routerLink]="['/exam/']">Exam</a>
+          </li>
+          <li class="nav-item ">
+            <a class="nav-link" [routerLink]="['/admin/user/']">USER</a>
+          </li>
+          <li *ngIf="check== false" class="nav-item"><a class="nav-link" [routerLink]="['/auth/login']">Đăng nhập</a></li>
+          <div *ngIf="check== true" class="dropdown ">
+            <button class="dropbtn">Hi, {{userName.result.data}}</button>
+            <div class="dropdown-content">
+              <a [routerLink]="['/exam/']">Ngân hàng đề thi</a>
+              <a href="#">Ngân hàng câu hỏi</a>
+              <a (click)="logout1()">Đăng xuất</a>
+            </div>
+          </div>
+        </ul>
+      </div>
+    </div>
+  </nav>
