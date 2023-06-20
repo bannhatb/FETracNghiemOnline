@@ -17,7 +17,7 @@ export class AccountService   extends BaseService implements CanActivate{
     return environment.API_ENDPOINT;
   }
   getUserName(){
-    return this.get(`/api/Account/get-username`);
+    return this.get(`/api/Home/get-username`);
   }
 }
 
