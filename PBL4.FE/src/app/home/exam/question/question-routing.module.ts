@@ -13,11 +13,11 @@ const router : Routes =[
         component: QuestionDetailComponent,
       },
       {
-        path: 'add-question/:testId',
+        path: 'add-question',
         component: AddQuestionComponent,
       },
       {
-        path: '',
+        path: 'question-detail',
         component: QuestionComponent
       }
     ]

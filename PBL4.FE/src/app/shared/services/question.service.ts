@@ -32,4 +32,12 @@ export class QuestionService extends BaseService implements CanActivate {
   DeleteQuestion(id: number): Observable<Response<ResponseDefault>>{
     return this.delete(`api/Question/delete-question/${id}`);
   }
+  GetListQuestionOfUser(): Observable<Response<ResponseDefault>>{
+    return this.get(`api/Question/get-list-question-of-user`);
+  }
+  GetAllLevel(): Observable<Response<ResponseDefault>>{
+    // console.log( this.get('api/Home/get-all-level'));
+    
+    return this.get('api/Home/get-all-level');
+  }
 }

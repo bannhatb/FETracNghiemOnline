@@ -2,13 +2,6 @@
 <div class="main">
     <form [formGroup]="formAddQuestion">
         <div class="form-group">
-            <!-- <label>Một lựa chọn
-            <input type="radio" value="true" name="questionType" formControlName="questionType">
-            </label>
-            <label style="margin-left: 20px;">Nhiều lựa chọn
-                <input type="radio" value="false" name ="questionType" formControlName="questionType" >
-            </label>
-            <br> -->
             <div formGroupName="question">
 
                 <label>
@@ -20,32 +13,32 @@
                     <input type="text" formControlName="explaint" [value]=''>
                 </label>
                 <br>
-                <div class=" form-group row align-items-center">
-                    <label class="col-3" for="LevelId">Mức độ:</label>
-                    <select name="levelID" formControlName="levelID" class="form-control col-9">
-                      <option value="1">Dễ</option>
-                      <option value="2">Trung bình</option>
-                      <option value="3">Khó</option>
-                    </select>
-                  </div>
-                <!-- <label for="">Danh sách câu trả lời</label> -->
+                <!-- <div class=" form-group row align-items-center">
+                  <label class="col-3" for="">
+                    Loại đề thi:
+                  </label>
+                  <select name="Categories"  (change)="newCategory($event)"  class="form-control col-9">
+                    <option formControlName="Categories" *ngFor="let ca of listCategory.result.items" [value]="ca.id">{{ca.levelName}}</option>
+                  </select>
+                </div> -->
+                <!-- <div class=" form-group row align-items-center">
+                  <label class="col-3" for="">
+                    Loại đề thi:
+                  </label>
+                  <select name="Levels"  (change)="newCategory($event)"  class="form-control col-9">
+                    <option *ngFor="let level of listLevel.result.items" [value]="level.id">{{level.levelName}}</option>
+                  </select>
+                  </div> -->
+                <br>
             </div>
-            <!-- <div class=" form-group row align-items-center">
-                <label class="col-3" for="">
-                  Loại đề thi:
-                </label>
-                <select name="Categories" formControlName="Categories" (change)="newCategory($event)"  class="form-control col-9">
-                  <option *ngFor="let ca of listCategory.result.items" [value]="ca.id">{{ca.categoryName}}</option>
-                </select>
-            </div>
-            <br> -->
+            
+            <br>
             
             <label for="">
              Danh sách câu trả lời
             </label>
         </div>
-        <!-- trả về đề thi trước khi thêm -->
-        <!-- <a [routerLink]="['/exam/']" routerLinkActive="router-link-active" class="btn btn-outline-warning">Hủy</a> -->
+
         <div *ngIf="answers">
             <div formArrayName="answers">
               <div *ngFor="let answerGroup of answers.controls; let i = index" [formGroupName]="i">
