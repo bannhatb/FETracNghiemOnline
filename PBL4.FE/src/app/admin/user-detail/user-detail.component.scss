@@ -41,10 +41,10 @@ html {
 body {
     font-size: 16px;
     color: #333;
-    font-family: 'Times New Roman', Times, serif;
+    // font-family: 'Times New Roman', Times, serif;
     margin: 0%;
     padding: 0%;
-    border: 1px solid rebeccapurple;
+    // border: 1px solid rebeccapurple;
 }
 
 .main-face {
@@ -71,7 +71,7 @@ body {
 }
 
 .ava-block {
-    background-color: #3479B5;
+    // background-color: #3479B5;
     color: #CCF2FC;
     text-align: center;
 }
@@ -79,6 +79,7 @@ body {
 .ava-block div img {
     border-radius: 50%;
     padding-bottom: 1em;
+    height: 150px;
 }
 
 h3 {
@@ -107,4 +108,12 @@ h3 {
     list-style: none;
     display: flex;
     justify-content: space-between;
+}
+
+.p-20 {
+    padding: 20px;
+}
+
+table td {
+    padding: 0 10px;
 }
