@@ -20,30 +20,17 @@ export class QuestionComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    // this.GetListQuestionOfExam(this.urlQuery.keyword);
     this.GetListQuestionOfUser();
   }
-  // ChangePageHandler(page : number){
-  //   this.urlQuery.pageNumber = page;
-  //   this.GetListQuestionOfExam(this.urlQuery.keyword);
-  // }
+
   GetListQuestionOfUser(){
-    // this.activeRoute.params.subscribe((id)=>{
-    //   this.examId = id.id;
-    // })
-    // this.urlQuery.keyword = text;
-    this.questionService.GetListQuestionOfUser().subscribe((res)=>{
-      // this.ListQuestion = res.result?.items;
-      // if(this.ListQuestion != undefined){
-      //   this.total = res.result?.total;
-      //   this.TotalPage = Math.ceil(this.total/this.urlQuery.pageSize);
-      // }
-      this.ListQuestion = res.result?.data;
+    this.questionService.GetListQuestionOfUser().subscribe(
+      (res)=>{
+      this.ListQuestion = res;
       console.log(this.ListQuestion);
     }, (err)=>{
-      console.log(this.ListQuestion);
-
-      console.log(err.error.message);
+      // console.log(this.ListQuestion);
+      console.log(err);
     })
   }
 }

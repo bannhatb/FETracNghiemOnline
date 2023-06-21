@@ -6,21 +6,33 @@
 
                 <label>
                     Nội dung câu hỏi
-                    <input type="text" formControlName="questionContent" [value]=''>
+                    <input type="text" formControlName="questionContent" >
                 </label>
                 <label>
                     Mô tả
-                    <input type="text" formControlName="explaint" [value]=''>
+                    <input type="text" formControlName="explaint">
                 </label>
                 <br>
-                <!-- <div class=" form-group row align-items-center">
+                <div class=" form-group row align-items-center">
                   <label class="col-3" for="">
-                    Loại đề thi:
+                    Độ khó:
                   </label>
-                  <select name="Categories"  (change)="newCategory($event)"  class="form-control col-9">
-                    <option formControlName="Categories" *ngFor="let ca of listCategory.result.items" [value]="ca.id">{{ca.levelName}}</option>
+                  <select name="Levels" formControlName="levelID"   class="form-control col-9">
+                    <option  *ngFor="let ca of listLevels?.items" [value]="ca.id">{{ca.levelName}}</option>
                   </select>
-                </div> -->
+                  <div class=" form-group row align-items-center">
+                    <label class="col-3" for="">
+                      Loại đề thi:
+                    </label>
+                    <select name="Categories" formControlName="Categories" (change)="newCategory($event)"  class="form-control col-9">
+                      <option *ngFor="let ca of listCategory?.result.items" [value]="ca.id">{{ca.categoryName}}</option>
+                    </select>
+                    <!-- <div *ngIf="listCategoryChoose" class="d-flex">
+                      <div *ngFor="let chooser of listCateDisplay">{{chooser}} - </div>
+                    </div> -->
+                  </div>
+                  
+                </div>
                 <!-- <div class=" form-group row align-items-center">
                   <label class="col-3" for="">
                     Loại đề thi:
@@ -28,8 +40,8 @@
                   <select name="Levels"  (change)="newCategory($event)"  class="form-control col-9">
                     <option *ngFor="let level of listLevel.result.items" [value]="level.id">{{level.levelName}}</option>
                   </select>
-                  </div> -->
-                <br>
+                  </div>
+                <br> -->
             </div>
             
             <br>
@@ -44,7 +56,15 @@
               <div *ngFor="let answerGroup of answers.controls; let i = index" [formGroupName]="i">
                 <div >
                   <input type="text" formControlName="answerContent">
-                  <input type="radio" formControlName="rightAnswer" [value] = "true">
+                  <div *ngIf="answerGroup.value.rightAnswer">
+    
+                    <input  type="checkbox" formControlName="rightAnswer" name = "rightAnswer" checked=true >
+                  </div>
+                  <div *ngIf="!answerGroup.value.rightAnswer">
+    
+                    <input  type="checkbox" formControlName="rightAnswer" name = "rightAnswer"  >
+                  </div>
+                  <!-- <input  type="radio" formControlName="rightAnswer" > -->
                 </div>
               </div>
             </div>

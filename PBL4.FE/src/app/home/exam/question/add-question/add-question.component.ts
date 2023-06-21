@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { ExamService } from 'src/app/shared/services/exam.service';
 import { QuestionService } from 'src/app/shared/services/question.service';
 
 @Component({
@@ -12,7 +13,9 @@ export class AddQuestionComponent implements OnInit {
   listCategory : any;
   listCategoryChoose = new Array<number>();
   listCateDisplay = new Array<string>();
+  listLevels : any;
   constructor(private questionService: QuestionService,
+    private examService: ExamService,
     private fb : FormBuilder) { }
     formAddQuestion : FormGroup;
   ngOnInit(): void {
@@ -20,9 +23,8 @@ export class AddQuestionComponent implements OnInit {
       question : this.fb.group({
         questionContent: [''],
         explaint: [''],
-        levelID : [0],
-        Categories : this.fb.array([3]),
-        // Categories: [0]
+        levelID : [1],
+        Categories : this.fb.array([1]),
       }),
       answers: this.fb.array([
         this.fb.group({
@@ -31,16 +33,15 @@ export class AddQuestionComponent implements OnInit {
         }),
       ])
     });
+    this.GetAllLevels();
     this.GetAllCategory();
-    // console.log(this.formAddQuestion.get('answers')?.value);
-    
   }
   get answers(): FormArray {
     return this.formAddQuestion.get('answers') as FormArray;
   }
-  // createAnswerNull(){
-
-  // }
+  get question(): FormGroup {
+    return this.formAddQuestion.get('question') as FormGroup;
+  }
   inputs: string[] = [];
 
   addInput(): void {
@@ -51,7 +52,7 @@ export class AddQuestionComponent implements OnInit {
   }
   addQuestion(): void {
     const requestModel = {
-      question: this.formAddQuestion.value.question,
+      question:  this.formAddQuestion.value.question,
       answers: this.formAddQuestion.value.answers
     };
 
@@ -67,26 +68,43 @@ export class AddQuestionComponent implements OnInit {
     );
   }
   newCategory(event: any){
-    let value = event.target.value as number;
+    let value = event.target.value;
     if(this.listCategoryChoose.indexOf(value) !==-1){
       let index = this.listCategoryChoose.indexOf(value);
       this.listCategoryChoose.splice(index,1);
-      //this.listCateDisplay.splice(index,1);
+      this.listCateDisplay.splice(index,1);
     }
     else{
-      this.listCategoryChoose.push(value);
-      //this.listCateDisplay.push(this.GetNameCate(value).categoryName);
+      this.listCategoryChoose.push(Number(value));
+      this.listCateDisplay.push(this.GetNameCate(value));
     }
     console.log(this.listCategoryChoose);
-    //console.log(this.listCateDisplay);
+    console.log(this.listCateDisplay);
+  }
+  GetNameCate(id : number)  {
+    let name = ''
+    this.listCategory.result.items.forEach(
+      (item : any) => {
+        if (item.id == id) {
+          name = item.categoryName;
+        }
+      }
+    )
+    return name;
+  }
+  GetAllLevels(){
+    this.questionService.GetAllLevel().subscribe((res)=>{
+      this.listLevels = res.result;
+      console.log(this.listLevels);
+    }, (err)=>{
+      console.log(err.error.message);
+    })
   }
   GetAllCategory(){
-    this.questionService.GetAllLevel().subscribe((res)=>{
+    this.examService.GetCategory().subscribe((res)=>{
       this.listCategory = res;
       console.log(this.listCategory);
     }, (err)=>{
-      console.log(this.listCategory);
-
       console.log(err.error.message);
     })
   }

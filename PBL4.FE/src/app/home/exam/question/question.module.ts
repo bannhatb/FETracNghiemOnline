@@ -6,11 +6,14 @@ import { SharedModule } from "src/app/shared/shared.module";
 import { AddQuestionComponent } from "./add-question/add-question.component";
 import { QuestionDetailComponent } from "./question-detail/question-detail.component";
 import { QuestionRoutingModule } from "./question-routing.module";
+import { UpdateQuestionComponent } from './update-question/update-question.component';
+
 
 @NgModule({
   declarations: [
     AddQuestionComponent,
-    QuestionDetailComponent
+    QuestionDetailComponent,
+    UpdateQuestionComponent,
   ],
   imports: [
     QuestionRoutingModule,

@@ -27,28 +27,36 @@ export class AddExamComponent implements OnInit {
       QuestionCountLevel4 : [0],
       QuestionCountLevel5 : [0],
       IsPublic: [false],
-      Categories: ['']
+      Categories: this.fb.array([1]),
     });
-    // this.GetAllCategory();
+    this.GetAllCategory();
   }
   newCategory(event: any){
-    let value = event.target.value as number;
+    let value = event.target.value;
     if(this.listCategoryChoose.indexOf(value) !==-1){
       let index = this.listCategoryChoose.indexOf(value);
       this.listCategoryChoose.splice(index,1);
-      //this.listCateDisplay.splice(index,1);
+      this.listCateDisplay.splice(index,1);
     }
     else{
       this.listCategoryChoose.push(value);
-      //this.listCateDisplay.push(this.GetNameCate(value).categoryName);
+      // this.listCateDisplay.push(this.GetNameCate(value).categoryName);
+      this.listCateDisplay.push(this.GetNameCate(value));
     }
     console.log(this.listCategoryChoose);
+    console.log(this.listCateDisplay);
     //console.log(this.listCateDisplay);
   }
-  GetNameCate(id : number) {
-    // return this.listCategory.forEach((e: any) => {
-    //   return e.id === id
-    // });
+  GetNameCate(id : number)  {
+    let name = ''
+    this.listCategory.result.items.forEach(
+      (item : any) => {
+        if (item.id == id) {
+          name = item.categoryName;
+        }
+      }
+    )
+    return name;
   }
   CreateExam(){
     const requestModel = {
@@ -75,13 +83,13 @@ export class AddExamComponent implements OnInit {
     this.router.navigateByUrl(`/exam`);
 
   }
-  // GetAllCategory(){
-  //   this.examService.GetCategory().subscribe((res)=>{
-  //     this.listCategory = res;
-  //     console.log(this.listCategory);
-  //   }, (err)=>{
-  //     console.log(err.error.message);
-  //   })
-  // }
+  GetAllCategory(){
+    this.examService.GetCategory().subscribe((res)=>{
+      this.listCategory = res;
+      console.log(this.listCategory);
+    }, (err)=>{
+      console.log(err.error.message);
+    })
+  }
 
 }

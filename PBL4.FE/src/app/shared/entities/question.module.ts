@@ -13,6 +13,6 @@ export interface QuestionFullModel{
   explaint : string;
   rightCount: number;
   typeId: number;
-  kistAnswers : AnswerModel[];
+  listAnswers : AnswerModel[];
   categories: number[];
 }

@@ -91,12 +91,10 @@
           </li>
           <li *ngIf="check== false" class="nav-item"><a class="nav-link" [routerLink]="['/auth/login']">Đăng nhập</a></li>
           <div *ngIf="check== true" class="dropdown ">
-            <button class="dropbtn">Hi, {{userName.result.data}}</button>
+            <button class="dropbtn">Hi, {{userName?.result.data}}</button>
             <div class="dropdown-content">
               <a [routerLink]="['/exam/']">Ngân hàng đề thi</a>
-              <a href="#">Ngân hàng câu hỏi</a>
-              <a [routerLink]="'/exam/question/add-question/'" class="btn btn-primary" style="margin: 10px 0 20px 50px;">Thêm câu hỏi</a>
-
+              <a [routerLink]="['/exam/question/question-detail']">Ngân hàng câu hỏi</a>
               <a (click)="logout1()">Đăng xuất</a>
             </div>
           </div>

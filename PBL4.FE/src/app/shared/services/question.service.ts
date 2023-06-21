@@ -3,7 +3,7 @@ import { Injectable } from "@angular/core";
 import { ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot } from "@angular/router";
 import { Observable } from "rxjs";
 import { QuestionFullModel } from "../entities/question.module";
-import { Response, ResponseDefault } from "../response.module";
+import { Pagination, Response, ResponseDefault } from "../response.module";
 import { BaseService } from "./base.service";
 
 @Injectable({
@@ -24,20 +24,22 @@ export class QuestionService extends BaseService implements CanActivate {
     return this.post(`/api/Question/add-question`, questionForm);
   }
   UpdateQuestion(questionForm: any): Observable<Response<ResponseDefault>>{
-    return this.put(`/api/Question/update-question`, questionForm);
+    return this.post(`/api/Question/update-question`, questionForm);
   }
   AddQuestionToExam(queExamForm: any) : Observable<Response<ResponseDefault>>{
-    return this.post(`api/Question/add-question-to-exam`, queExamForm);
+    return this.post(`/api/Question/add-question-to-exam`, queExamForm);
   }
   DeleteQuestion(id: number): Observable<Response<ResponseDefault>>{
-    return this.delete(`api/Question/delete-question/${id}`);
+    return this.delete(`/api/Question/delete-question/${id}`);
   }
-  GetListQuestionOfUser(): Observable<Response<ResponseDefault>>{
-    return this.get(`api/Question/get-list-question-of-user`);
+  // GetListQuestionOfUser() {
+  //   return this.get('api/Question/get-list-question-of-user');
+  // }
+  GetListQuestionOfUser() {
+    return this.get(`/api/Question/get-list-question-of-user`);
   }
   GetAllLevel(): Observable<Response<ResponseDefault>>{
-    // console.log( this.get('api/Home/get-all-level'));
-    
-    return this.get('api/Home/get-all-level');
+    return this.get('/api/Home/get-all-level');
   }
+
 }
