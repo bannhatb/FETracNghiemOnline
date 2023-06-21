@@ -19,11 +19,17 @@ export class AddExamComponent implements OnInit {
     this.formAddExam = this.fb.group({
       Title : [''],
       Time : [''],
-      LevelId: [''],
+      RandomQuestion : [false],
+      QuestionCount : [0],
+      QuestionCountLevel1 : [0],
+      QuestionCountLevel2 : [0],
+      QuestionCountLevel3 : [0],
+      QuestionCountLevel4 : [0],
+      QuestionCountLevel5 : [0],
       IsPublic: [false],
       Categories: ['']
     });
-    this.GetAllCategory();
+    // this.GetAllCategory();
   }
   newCategory(event: any){
     let value = event.target.value as number;
@@ -46,27 +52,36 @@ export class AddExamComponent implements OnInit {
   }
   CreateExam(){
     const requestModel = {
-      Title: this.formAddExam.value.Title,
-      Time: this.formAddExam.value.Time,
-      LevelId: this.formAddExam.value.LevelId,
-      QuestionCount : 0,
-      IsPublic: this.formAddExam.value.IsPublic,
-      Categories: this.listCategoryChoose
+      title: this.formAddExam.value.Title,
+      time: this.formAddExam.value.Time,
+      isPublic: this.formAddExam.value.IsPublic,
+      randomQuestion: this.formAddExam.value.RandomQuestion,
+      questionCount : this.formAddExam.value.QuestionCount,
+      questionCountLevel1 : this.formAddExam.value.QuestionCountLevel1,
+      questionCountLevel3 : this.formAddExam.value.QuestionCountLevel3,
+      questionCountLevel2 : this.formAddExam.value.QuestionCountLevel2,
+      questionCountLevel4 : this.formAddExam.value.QuestionCountLevel4,
+      questionCountLevel5 : this.formAddExam.value.QuestionCountLevel5,
+      categories: this.listCategoryChoose
     };
     this.examService.CreateExam(requestModel).subscribe((res)=>{
+      console.log(res);
+      
     }, (err)=>{
+      console.log(requestModel);
+      
       console.log(err);
     });
     this.router.navigateByUrl(`/exam`);
 
   }
-  GetAllCategory(){
-    this.examService.GetCategory().subscribe((res)=>{
-      this.listCategory = res;
-      console.log(this.listCategory);
-    }, (err)=>{
-      console.log(err.error.message);
-    })
-  }
+  // GetAllCategory(){
+  //   this.examService.GetCategory().subscribe((res)=>{
+  //     this.listCategory = res;
+  //     console.log(this.listCategory);
+  //   }, (err)=>{
+  //     console.log(err.error.message);
+  //   })
+  // }
 
 }

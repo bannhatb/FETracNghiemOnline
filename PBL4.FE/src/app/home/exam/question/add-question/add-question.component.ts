@@ -9,9 +9,9 @@ import { QuestionService } from 'src/app/shared/services/question.service';
 })
 export class AddQuestionComponent implements OnInit {
   formQuestion : FormGroup;
+  listCategory : any;
   listCategoryChoose = new Array<number>();
   listCateDisplay = new Array<string>();
-
   constructor(private questionService: QuestionService,
     private fb : FormBuilder) { }
     formAddQuestion : FormGroup;
@@ -21,19 +21,17 @@ export class AddQuestionComponent implements OnInit {
         questionContent: [''],
         explaint: [''],
         levelID : [0],
-        categories : this.fb.array([3]),
+        Categories : this.fb.array([3]),
+        // Categories: [0]
       }),
       answers: this.fb.array([
         this.fb.group({
           answerContent: [''],
           rightAnswer: [false],
         }),
-        // this.fb.group({
-        //   answer: [''],
-        //   rightAnswer: [false],
-        // })
       ])
-    })
+    });
+    this.GetAllCategory();
     // console.log(this.formAddQuestion.get('answers')?.value);
     
   }
@@ -82,5 +80,14 @@ export class AddQuestionComponent implements OnInit {
     console.log(this.listCategoryChoose);
     //console.log(this.listCateDisplay);
   }
+  GetAllCategory(){
+    this.questionService.GetAllLevel().subscribe((res)=>{
+      this.listCategory = res;
+      console.log(this.listCategory);
+    }, (err)=>{
+      console.log(this.listCategory);
 
+      console.log(err.error.message);
+    })
+  }
 }
