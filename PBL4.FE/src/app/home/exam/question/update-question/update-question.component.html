@@ -13,23 +13,28 @@
             <input type="text" formControlName="explaint">
         </label>
         <br>
+        <div class=" form-group row align-items-center">
+          <label class="col-3" for="">
+            Độ khó:
+          </label>
+          <select name="Levels" formControlName="levelId"   class="form-control col-9">
+            
+            <option  *ngFor="let l of listLevels?.items" [value]="l.id" [selected]="">{{l.levelName}}</option>
+          </select>
           <div class=" form-group row align-items-center">
             <label class="col-3" for="">
               Loại đề thi:
             </label>
-            <select name="categories" formControlName="categories" (change)="newCategory($event)"  class="form-control col-9">
-              <option  *ngFor="let ca of listCategory.result.items" [value]="ca.id">{{ca.levelName}}</option>
+            <select name="Categories" formControlName="categories" (change)="newCategory($event)"  class="form-control col-9">
+              <option *ngFor="let ca of listCategory?.result.items" [value]="ca.id" [selected]="">{{ca.categoryName}}</option>
             </select>
-          </div>
-          <!-- <div class=" form-group row align-items-center">
-            <label class="col-3" for="">
-              Loại đề thi:
-            </label>
-            <select name="Levels"  (change)="newCategory($event)"  class="form-control col-9">
-              <option *ngFor="let level of listLevel.result.items" [value]="level.id">{{level.levelName}}</option>
-            </select>
+            <!-- <div *ngIf="listCategoryChoose" class="d-flex">
+              <div *ngFor="let chooser of listCateDisplay">{{chooser}} - </div>
             </div> -->
-          <br>
+          </div>
+          
+        </div>
+          
       </div>
         
         <br>

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
+import { ExamService } from 'src/app/shared/services/exam.service';
 import { QuestionService } from 'src/app/shared/services/question.service';
 @Component({
   selector: 'app-update-question',
@@ -14,7 +15,9 @@ export class UpdateQuestionComponent implements OnInit {
   listCateDisplay = new Array<string>();
   questionID : number;
   collectedQuestion: any;
+  listLevels : any;
   constructor(private questionService: QuestionService, private activeRoute : ActivatedRoute,
+    private examService: ExamService,
     private fb : FormBuilder) { }
     formUpdateQuestion : FormGroup;
     ngOnInit(): void {  
@@ -39,8 +42,8 @@ export class UpdateQuestionComponent implements OnInit {
     });
     
     this.getQuestion();
-
-    // console.log(this.formUpdateQuestion.value);
+    this.GetAllLevels();
+    this.GetAllCategory()
     
   }
   get answers(): FormArray {
@@ -59,7 +62,6 @@ export class UpdateQuestionComponent implements OnInit {
       question: this.formUpdateQuestion.value.question,
       answers: this.formUpdateQuestion.value.answers
     };
-    // console.log(this.questionService.UpdateQuestion(requestModel));
     
     this.questionService.UpdateQuestion(requestModel).subscribe(
       (res) => {
@@ -73,30 +75,26 @@ export class UpdateQuestionComponent implements OnInit {
       }
     );
   }
+  GetAllLevels(){
+    this.questionService.GetAllLevel().subscribe((res)=>{
+      this.listLevels = res.result;
+      console.log(this.listLevels);
+    }, (err)=>{
+      console.log(err.error.message);
+    })
+  }
   newCategory(event: any){
     let value = event.target.value as number;
     if(this.listCategoryChoose.indexOf(value) !==-1){
       let index = this.listCategoryChoose.indexOf(value);
       this.listCategoryChoose.splice(index,1);
-      //this.listCateDisplay.splice(index,1);
     }
     else{
       this.listCategoryChoose.push(value);
-      //this.listCateDisplay.push(this.GetNameCate(value).categoryName);
     }
     console.log(this.listCategoryChoose);
-    //console.log(this.listCateDisplay);
   }
-  // GetAllCategory(){
-  //   this.questionService.GetAllLevel().subscribe((res)=>{
-  //     this.listCategory = res;
-  //     console.log(this.listCategory);
-  //   }, (err)=>{
-  //     console.log(this.listCategory);
-
-  //     console.log(err.error.message);
-  //   })
-  // }
+ 
   getQuestion(){
     
     this.activeRoute.params.subscribe((id)=>{
@@ -107,6 +105,7 @@ export class UpdateQuestionComponent implements OnInit {
     this.questionService.GetQuestionDetail(String(this.questionID)).subscribe((res)=>{
       this.collectedQuestion = res.result;
       console.log(this.collectedQuestion);
+      console.log( this.collectedQuestion.levelId);
       
       this.formUpdateQuestion.patchValue({
         question:{
@@ -130,14 +129,20 @@ export class UpdateQuestionComponent implements OnInit {
           rightAnswer: [answer.rightAnswer]
         }));
       })
-      // console.log(this.answers.value);
-      
     },
     (err)=>{
       console.log(err);
     }
     )
     
+  }
+  GetAllCategory(){
+    this.examService.GetCategory().subscribe((res)=>{
+      this.listCategory = res;
+      console.log(this.listCategory);
+    }, (err)=>{
+      console.log(err.error.message);
+    })
   }
 
 }
