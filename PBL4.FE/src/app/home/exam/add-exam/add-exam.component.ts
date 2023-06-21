@@ -29,7 +29,7 @@ export class AddExamComponent implements OnInit {
       IsPublic: [false],
       Categories: ['']
     });
-    // this.GetAllCategory();
+    this.GetAllCategory();
   }
   newCategory(event: any){
     let value = event.target.value as number;
@@ -66,22 +66,21 @@ export class AddExamComponent implements OnInit {
     };
     this.examService.CreateExam(requestModel).subscribe((res)=>{
       console.log(res);
-      
-    }, (err)=>{
+
       console.log(requestModel);
-      
+    }, (err)=>{
       console.log(err);
     });
     this.router.navigateByUrl(`/exam`);
 
   }
-  // GetAllCategory(){
-  //   this.examService.GetCategory().subscribe((res)=>{
-  //     this.listCategory = res;
-  //     console.log(this.listCategory);
-  //   }, (err)=>{
-  //     console.log(err.error.message);
-  //   })
-  // }
+  GetAllCategory(){
+    this.examService.GetCategory().subscribe((res)=>{
+      this.listCategory = res;
+      console.log(this.listCategory);
+    }, (err)=>{
+      console.log(err.error.message);
+    })
+  }
 
 }

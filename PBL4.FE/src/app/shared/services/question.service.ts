@@ -35,9 +35,7 @@ export class QuestionService extends BaseService implements CanActivate {
   GetListQuestionOfUser(): Observable<Response<ResponseDefault>>{
     return this.get(`api/Question/get-list-question-of-user`);
   }
-  GetAllLevel(): Observable<Response<ResponseDefault>>{
-    // console.log( this.get('api/Home/get-all-level'));
-    
-    return this.get('api/Home/get-all-level');
+  GetLevel(): Observable<Response<ResponseDefault>>{
+    return this.get(`/api/Home/get-all-level`);
   }
 }

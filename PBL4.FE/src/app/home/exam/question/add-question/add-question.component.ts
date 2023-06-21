@@ -17,30 +17,26 @@ export class AddQuestionComponent implements OnInit {
     formAddQuestion : FormGroup;
   ngOnInit(): void {
     this.formAddQuestion = this.fb.group({
-      question : this.fb.group({
+        question : this.fb.group({
         questionContent: [''],
         explaint: [''],
-        levelID : [0],
-        Categories : this.fb.array([3]),
-        // Categories: [0]
+        Categories: ['']
       }),
       answers: this.fb.array([
-        this.fb.group({
+          this.fb.group({
           answerContent: [''],
           rightAnswer: [false],
         }),
       ])
     });
-    this.GetAllCategory();
-    // console.log(this.formAddQuestion.get('answers')?.value);
-    
+
+    this.GetAllLevel();
+
   }
   get answers(): FormArray {
     return this.formAddQuestion.get('answers') as FormArray;
   }
-  // createAnswerNull(){
 
-  // }
   inputs: string[] = [];
 
   addInput(): void {
@@ -52,7 +48,8 @@ export class AddQuestionComponent implements OnInit {
   addQuestion(): void {
     const requestModel = {
       question: this.formAddQuestion.value.question,
-      answers: this.formAddQuestion.value.answers
+      answers: this.formAddQuestion.value.answers,
+      categories: this.listCategoryChoose
     };
 
     this.questionService.AddNewQuestion(requestModel).subscribe(
@@ -60,12 +57,11 @@ export class AddQuestionComponent implements OnInit {
         console.log(requestModel);
       },
       (err) => {
-        console.log(requestModel);
-
         console.log(err);
       }
     );
   }
+
   newCategory(event: any){
     let value = event.target.value as number;
     if(this.listCategoryChoose.indexOf(value) !==-1){
@@ -80,14 +76,15 @@ export class AddQuestionComponent implements OnInit {
     console.log(this.listCategoryChoose);
     //console.log(this.listCateDisplay);
   }
-  GetAllCategory(){
-    this.questionService.GetAllLevel().subscribe((res)=>{
+
+
+  GetAllLevel() {
+    console.log("get all level")
+    this.questionService.GetLevel().subscribe((res)=>{
       this.listCategory = res;
       console.log(this.listCategory);
     }, (err)=>{
-      console.log(this.listCategory);
-
-      console.log(err.error.message);
+      console.log(err);
     })
   }
 }

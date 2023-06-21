@@ -16,7 +16,7 @@ export class HeaderComponent implements OnInit {
 
   constructor(private checkAuthor: AuthGuard,
     private authen: AuthenticationService , public router: Router,public acount : AccountService) {
-    
+
   }
   userName : any ;
   ngOnInit(): void {
@@ -32,7 +32,7 @@ export class HeaderComponent implements OnInit {
   getUserName(){
     this.acount.getUserName().subscribe((res)=>{
       this.userName = res;
-      // console.log(res.);
+      console.log(res);
     }, (err)=>{
       console.log(err.error.message);
     })
