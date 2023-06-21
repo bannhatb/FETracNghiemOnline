@@ -23,7 +23,8 @@ export class AddQuestionComponent implements OnInit {
       question : this.fb.group({
         questionContent: [''],
         explaint: [''],
-        levelID : [1],
+        levelID: [1],
+        typeId: [1],
         Categories : this.fb.array([1]),
       }),
       answers: this.fb.array([
