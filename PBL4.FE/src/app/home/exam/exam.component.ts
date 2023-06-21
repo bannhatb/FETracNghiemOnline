@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { UrlQuery } from 'src/app/shared/Models/UrlQuery';
 import { ExamService } from 'src/app/shared/services/exam.service';
 import { NotificationService } from 'src/app/shared/services/notification.service';
@@ -13,9 +14,14 @@ export class ExamComponent implements OnInit {
   ListExam : any;
   Total : any =0;
   TotalPage : number;
-  constructor(private examService : ExamService, private notificationService: NotificationService) { }
+  constructor(private examService : ExamService, private notificationService: NotificationService,
+    private router: Router
+    ) { }
 
   ngOnInit(): void {
+    this.router.navigateByUrl('/page').then(() => {
+      window.location.reload();
+    });
     this.GetListExamCreateCurrentUser(this.urlQuery.keyword);
   }
   ChangePageHandler(page : number){

@@ -37,6 +37,8 @@ export class ExamDetailComponent implements OnInit {
         this.TotalPage = Math.ceil(this.total/this.urlQuery.pageSize);
       }
       console.log(this.ListQuestion);
+      console.log(res);
+      
     }, (err)=>{
       console.log(err.error.message);
     })

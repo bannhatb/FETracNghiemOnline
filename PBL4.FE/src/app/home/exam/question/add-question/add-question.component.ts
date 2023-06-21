@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { ExamService } from 'src/app/shared/services/exam.service';
 import { QuestionService } from 'src/app/shared/services/question.service';
 
 @Component({
@@ -8,20 +9,23 @@ import { QuestionService } from 'src/app/shared/services/question.service';
   styleUrls: ['./add-question.component.scss']
 })
 export class AddQuestionComponent implements OnInit {
-  formQuestion: FormGroup;
-  listCategory: any;
+  formQuestion : FormGroup;
+  listCategory : any;
   listCategoryChoose = new Array<number>();
   listCateDisplay = new Array<string>();
+  listLevels : any;
   constructor(private questionService: QuestionService,
-    private fb: FormBuilder) { }
-  formAddQuestion: FormGroup;
+    private examService: ExamService,
+    private fb : FormBuilder) { }
+    formAddQuestion : FormGroup;
   ngOnInit(): void {
     this.formAddQuestion = this.fb.group({
-      question: this.fb.group({
+      question : this.fb.group({
         questionContent: [''],
         explaint: [''],
-        Categories: [''],
-        levelID: [0]
+        levelID: [1],
+        typeId: [1],
+        Categories : this.fb.array([1]),
       }),
       answers: this.fb.array([
         this.fb.group({
@@ -30,15 +34,15 @@ export class AddQuestionComponent implements OnInit {
         }),
       ])
     });
-    this.GetAllLevel();
-
+    this.GetAllLevels();
+    this.GetAllCategory();
   }
-
-
   get answers(): FormArray {
     return this.formAddQuestion.get('answers') as FormArray;
   }
-
+  get question(): FormGroup {
+    return this.formAddQuestion.get('question') as FormGroup;
+  }
   inputs: string[] = [];
 
   addInput(): void {
@@ -49,9 +53,8 @@ export class AddQuestionComponent implements OnInit {
   }
   addQuestion(): void {
     const requestModel = {
-      question: this.formAddQuestion.value.question,
-      answers: this.formAddQuestion.value.answers,
-      categories: this.listCategoryChoose
+      question:  this.formAddQuestion.value.question,
+      answers: this.formAddQuestion.value.answers
     };
 
     this.questionService.AddNewQuestion(requestModel).subscribe(
@@ -59,33 +62,51 @@ export class AddQuestionComponent implements OnInit {
         console.log(requestModel);
       },
       (err) => {
+        console.log(requestModel);
+
         console.log(err);
       }
     );
   }
-
-  newCategory(event: any) {
-    let value = event.target.value as number;
-    if (this.listCategoryChoose.indexOf(value) !== -1) {
+  newCategory(event: any){
+    let value = event.target.value;
+    if(this.listCategoryChoose.indexOf(value) !==-1){
       let index = this.listCategoryChoose.indexOf(value);
-      this.listCategoryChoose.splice(index, 1);
-      //this.listCateDisplay.splice(index,1);
+      this.listCategoryChoose.splice(index,1);
+      this.listCateDisplay.splice(index,1);
     }
-    else {
-      this.listCategoryChoose.push(value);
-      //this.listCateDisplay.push(this.GetNameCate(value).categoryName);
+    else{
+      this.listCategoryChoose.push(Number(value));
+      this.listCateDisplay.push(this.GetNameCate(value));
     }
     console.log(this.listCategoryChoose);
-    //console.log(this.listCateDisplay);
+    console.log(this.listCateDisplay);
   }
-
-  GetAllLevel() {
-    this.questionService.GetLevel().subscribe((res) => {
-      this.listCategory = res;
-      console.log(this.listCategory);
-    }, (err) => {
-      console.log(this.listCategory);
+  GetNameCate(id : number)  {
+    let name = ''
+    this.listCategory.result.items.forEach(
+      (item : any) => {
+        if (item.id == id) {
+          name = item.categoryName;
+        }
+      }
+    )
+    return name;
+  }
+  GetAllLevels(){
+    this.questionService.GetAllLevel().subscribe((res)=>{
+      this.listLevels = res.result;
+      console.log(this.listLevels);
+    }, (err)=>{
+      console.log(err.error.message);
     })
   }
-
+  GetAllCategory(){
+    this.examService.GetCategory().subscribe((res)=>{
+      this.listCategory = res;
+      console.log(this.listCategory);
+    }, (err)=>{
+      console.log(err.error.message);
+    })
+  }
 }

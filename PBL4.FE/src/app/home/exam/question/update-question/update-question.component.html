@@ -1,9 +1,8 @@
 <app-header></app-header>
 <div class="main">
-  <form [formGroup]="formAddQuestion">
+  <form [formGroup]="formUpdateQuestion">
     <div class="form-group">
       <div formGroupName="question">
-
         <label>
           Nội dung câu hỏi
           <input type="text" formControlName="questionContent">
@@ -17,20 +16,19 @@
           <label class="col-3" for="">
             Độ khó:
           </label>
-          <select name="Levels" formControlName="levelID" class="form-control col-9">
-            <option *ngFor="let ca of listLevels?.items" [value]="ca.id">{{ca.levelName}}</option>
+          <select name="Levels" formControlName="levelId" class="form-control col-9">
+
+            <option *ngFor="let l of listLevels?.items" [value]="l.id" [selected]="">{{l.levelName}}</option>
           </select>
           <div class=" form-group row align-items-center">
             <label class="col-3" for="">
               Loại đề thi:
             </label>
-            <select name="Categories" formControlName="Categories" (change)="newCategory($event)"
+            <select name="Categories" formControlName="categories" (change)="newCategory($event)"
               class="form-control col-9">
-              <option *ngFor="let ca of listCategory?.result.items" [value]="ca.id">{{ca.categoryName}}</option>
+              <option *ngFor="let ca of listCategory?.result.items" [value]="ca.id" [selected]="">{{ca.categoryName}}
+              </option>
             </select>
-            <!-- <div *ngIf="listCategoryChoose" class="d-flex">
-                      <div *ngFor="let chooser of listCateDisplay">{{chooser}} - </div>
-                    </div> -->
           </div>
 
         </div>
@@ -39,11 +37,11 @@
 
       <br>
 
-      <label for="">
-        Danh sách câu trả lời
-      </label>
     </div>
 
+    <label for="">
+      Danh sách câu trả lời
+    </label>
     <div *ngIf="answers">
       <div formArrayName="answers">
         <div *ngFor="let answerGroup of answers.controls; let i = index" [formGroupName]="i">
@@ -63,9 +61,9 @@
       </div>
       <button (click)="addInput()">Thêm câu trả lời</button>
     </div>
-    <button type="submit" (click)="addQuestion()" [routerLink]="['/exam/question/question-detail']">Add
+    <button type="submit" (click)="updateQuestion()" [routerLink]="['/exam/question/question-detail']">update
       question</button>
   </form>
-  <button [routerLink]="['/exam']">Quay lại</button>
+  <button [routerLink]="['/exam/question/question-detail']">Quay lại</button>
 </div>
 <app-footer></app-footer>
