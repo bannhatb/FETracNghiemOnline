@@ -8,31 +8,33 @@ import { QuestionService } from 'src/app/shared/services/question.service';
   styleUrls: ['./add-question.component.scss']
 })
 export class AddQuestionComponent implements OnInit {
-  formQuestion : FormGroup;
-  listCategory : any;
+  formQuestion: FormGroup;
+  listCategory: any;
   listCategoryChoose = new Array<number>();
   listCateDisplay = new Array<string>();
   constructor(private questionService: QuestionService,
-    private fb : FormBuilder) { }
-    formAddQuestion : FormGroup;
+    private fb: FormBuilder) { }
+  formAddQuestion: FormGroup;
   ngOnInit(): void {
     this.formAddQuestion = this.fb.group({
-        question : this.fb.group({
+      question: this.fb.group({
         questionContent: [''],
         explaint: [''],
-        Categories: ['']
+        Categories: [''],
+        levelID: [0]
       }),
       answers: this.fb.array([
-          this.fb.group({
+        this.fb.group({
           answerContent: [''],
           rightAnswer: [false],
         }),
       ])
     });
-
     this.GetAllLevel();
 
   }
+
+
   get answers(): FormArray {
     return this.formAddQuestion.get('answers') as FormArray;
   }
@@ -62,14 +64,14 @@ export class AddQuestionComponent implements OnInit {
     );
   }
 
-  newCategory(event: any){
+  newCategory(event: any) {
     let value = event.target.value as number;
-    if(this.listCategoryChoose.indexOf(value) !==-1){
+    if (this.listCategoryChoose.indexOf(value) !== -1) {
       let index = this.listCategoryChoose.indexOf(value);
-      this.listCategoryChoose.splice(index,1);
+      this.listCategoryChoose.splice(index, 1);
       //this.listCateDisplay.splice(index,1);
     }
-    else{
+    else {
       this.listCategoryChoose.push(value);
       //this.listCateDisplay.push(this.GetNameCate(value).categoryName);
     }
@@ -77,14 +79,13 @@ export class AddQuestionComponent implements OnInit {
     //console.log(this.listCateDisplay);
   }
 
-
   GetAllLevel() {
-    console.log("get all level")
-    this.questionService.GetLevel().subscribe((res)=>{
+    this.questionService.GetLevel().subscribe((res) => {
       this.listCategory = res;
       console.log(this.listCategory);
-    }, (err)=>{
-      console.log(err);
+    }, (err) => {
+      console.log(this.listCategory);
     })
   }
+
 }
