@@ -9,6 +9,7 @@ import { AllExamComponent } from './all-exam/all-exam.component';
 import { QuestionExamComponent } from './question-exam/question-exam.component';
 import { TestExamComponent } from './test-exam/test-exam.component';
 import { AnalysisTestComponent } from './analysis-test/analysis-test.component';
+import { AllQuestionComponent } from './all-question/all-question.component';
 
 @NgModule({
   imports: [SharedModule,
@@ -24,7 +25,8 @@ import { AnalysisTestComponent } from './analysis-test/analysis-test.component';
     AllExamComponent,
     QuestionExamComponent,
     TestExamComponent,
-    AnalysisTestComponent
+    AnalysisTestComponent,
+    AllQuestionComponent,
   ]
 })
 export class AdminModule {}
