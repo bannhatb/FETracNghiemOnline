@@ -65,11 +65,9 @@ export class AddExamComponent implements OnInit {
       categories: this.listCategoryChoose
     };
     this.examService.CreateExam(requestModel).subscribe((res)=>{
-      console.log(res);
-      
-    }, (err)=>{
       console.log(requestModel);
-      
+      console.log(res);
+    }, (err)=>{
       console.log(err);
     });
     this.router.navigateByUrl(`/exam`);

@@ -1,19 +1,19 @@
 <app-header></app-header>
 <div class="main">
-    <form [formGroup]="formAddQuestion">
-        <div class="form-group">
-            <div formGroupName="question">
+  <form [formGroup]="formAddQuestion">
+    <div class="form-group">
+      <div formGroupName="question">
 
-                <label>
-                    Nội dung câu hỏi
-                    <input type="text" formControlName="questionContent" [value]=''>
-                </label>
-                <label>
-                    Mô tả
-                    <input type="text" formControlName="explaint" [value]=''>
-                </label>
-                <br>
-                <!-- <div class=" form-group row align-items-center">
+        <label>
+          Nội dung câu hỏi
+          <input type="text" formControlName="questionContent" [value]=''>
+        </label>
+        <label>
+          Mô tả
+          <input type="text" formControlName="explaint" [value]=''>
+        </label>
+        <br>
+        <!-- <div class=" form-group row align-items-center">
                   <label class="col-3" for="">
                     Loại đề thi:
                   </label>
@@ -21,7 +21,7 @@
                     <option formControlName="Categories" *ngFor="let ca of listCategory.result.items" [value]="ca.id">{{ca.levelName}}</option>
                   </select>
                 </div> -->
-                <!-- <div class=" form-group row align-items-center">
+        <!-- <div class=" form-group row align-items-center">
                   <label class="col-3" for="">
                     Loại đề thi:
                   </label>
@@ -29,29 +29,30 @@
                     <option *ngFor="let level of listLevel.result.items" [value]="level.id">{{level.levelName}}</option>
                   </select>
                   </div> -->
-                <br>
-            </div>
-            
-            <br>
-            
-            <label for="">
-             Danh sách câu trả lời
-            </label>
-        </div>
+        <br>
+      </div>
 
-        <div *ngIf="answers">
-            <div formArrayName="answers">
-              <div *ngFor="let answerGroup of answers.controls; let i = index" [formGroupName]="i">
-                <div >
-                  <input type="text" formControlName="answerContent">
-                  <input type="radio" formControlName="rightAnswer" [value] = "true">
-                </div>
-              </div>
-            </div>
-            <button (click)="addInput()">Thêm câu trả lời</button>
+      <br>
+
+      <label for="">
+        Danh sách câu trả lời
+      </label>
+    </div>
+
+    <div *ngIf="answers">
+      <div formArrayName="answers">
+        <div *ngFor="let answerGroup of answers.controls; let i = index" [formGroupName]="i">
+          <div>
+            <input type="text" formControlName="answerContent">
+            <input type="radio" formControlName="rightAnswer" [value]="true">
           </div>
-          <button type="submit" (click)="addQuestion()">Add question</button>
-    </form>
-    <button [routerLink]="['/exam']">Quay lại</button>
+        </div>
+      </div>
+      <button (click)="addInput()">Thêm câu trả lời</button>
+    </div>
+    <button (click)="addInput()">Thêm câu trả lời</button>
+    <button type="submit" (click)="addQuestion()">Add question</button>
+  </form>
+  <button [routerLink]="['/exam']">Quay lại</button>
 </div>
 <app-footer></app-footer>
