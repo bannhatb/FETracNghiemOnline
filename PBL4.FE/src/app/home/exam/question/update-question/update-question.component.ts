@@ -16,6 +16,7 @@ export class UpdateQuestionComponent implements OnInit {
   questionID : number;
   collectedQuestion: any;
   listLevels : any;
+  isAdmin : any;
   constructor(private questionService: QuestionService, private activeRoute : ActivatedRoute,
     private examService: ExamService,
     private fb : FormBuilder) { }
@@ -99,9 +100,15 @@ export class UpdateQuestionComponent implements OnInit {
     
     this.activeRoute.params.subscribe((id)=>{
       this.questionID = Number(id.id);
-      console.log(this.questionID);
+      this.isAdmin = id.admin;
+      console.log(this.isAdmin);
       
+      console.log(this.questionID);
     })
+    // this.activeRoute.parent?.queryParams.subscribe(params => {
+    //   this.isAdmin = params['admin'];
+    //   console.log(this.isAdmin);
+    // });
     this.questionService.GetQuestionDetail(String(this.questionID)).subscribe((res)=>{
       this.collectedQuestion = res.result;
       console.log(this.collectedQuestion);

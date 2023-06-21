@@ -33,6 +33,14 @@ const router : Routes =[
           expectedRole: 'Teacher'
         }
       },
+      {
+        path: 'update-question/:id?admin',
+        component: UpdateQuestionComponent,
+        canActivate: [AuthenTeacherGuard],
+        data: {
+          expectedRole: 'Teacher'
+        }
+      },
       // {
       //   path: 'question-detail',
       //   component: QuestionComponent

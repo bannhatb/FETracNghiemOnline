@@ -39,5 +39,7 @@ export class AdminService extends BaseService implements CanActivate{
   DeleteExamAdmin(id : number){
     return this.post(`/api/Admin/delete-exam-admin`, id);
   }
-
+  GetAllQuestion(){
+    return this.get(`/api/Admin/get-all-question`);
+  }
 }

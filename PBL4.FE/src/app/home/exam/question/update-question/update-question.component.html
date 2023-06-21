@@ -64,6 +64,11 @@
     <button type="submit" (click)="updateQuestion()" [routerLink]="['/exam/question/question-detail']">update
       question</button>
   </form>
-  <button [routerLink]="['/exam/question/question-detail']">Quay lại</button>
+  <div *ngIf="isAdmin">
+    <button [routerLink]="['/admin/all-question']">Quay lại</button>
+  </div>
+  <div *ngIf="!isAdmin">
+    <button [routerLink]="['/exam/question/question-detail/']">Quay lại</button>
+  </div>
 </div>
 <app-footer></app-footer>

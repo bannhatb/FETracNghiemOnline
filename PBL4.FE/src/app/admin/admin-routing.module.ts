@@ -8,6 +8,7 @@ import { QuestionExamComponent } from "./question-exam/question-exam.component";
 import { TestExamComponent } from "./test-exam/test-exam.component";
 import { UserDetailComponent } from "./user-detail/user-detail.component";
 import { UserComponent } from "./user/user.component";
+import { AllQuestionComponent } from "./all-question/all-question.component";
 
 const router : Routes =[
   {
@@ -62,6 +63,14 @@ const router : Routes =[
       {
         path : 'analysis-test/:id',
         component : AnalysisTestComponent,
+        canActivate: [AuthenTeacherGuard],
+        data: {
+          expectedRole: 'Admin'
+        }
+      },
+      {
+        path : 'all-question',
+        component : AllQuestionComponent,
         canActivate: [AuthenTeacherGuard],
         data: {
           expectedRole: 'Admin'
