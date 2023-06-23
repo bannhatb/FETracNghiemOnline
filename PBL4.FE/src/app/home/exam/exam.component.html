@@ -66,11 +66,11 @@
 </table> -->
 
 <div class="container">
-    <div class="bg-gradient-blue d-flex justify-content-between">
-        <h2>Danh sách đề thi</h2>
+    <div class="bg-gradient-blue d-flex mx-5 justify-content-between">
+        <h2 >Danh sách đề thi</h2>
         <app-search [textSearch]="urlQuery.keyword" (search)="GetListExamCreateCurrentUser($event)"></app-search>
     </div>
-    <div class="add">
+    <div class="add mx-5 ">
 
         <a [routerLink]="['/exam/add-exam/']" routerLinkActive="router-link-active" class="btn btn-success" style="margin-left: 5px;">
             Thêm đề thi
@@ -123,7 +123,7 @@
     <div *ngIf="TotalPage > 1">
         <app-paging [totalPage]="TotalPage" [currentPage]="urlQuery.pageNumber" (changePage)="ChangePageHandler($event)"></app-paging>
     </div>
-   
+
 </div>
 <app-notification></app-notification>
 <app-footer></app-footer>

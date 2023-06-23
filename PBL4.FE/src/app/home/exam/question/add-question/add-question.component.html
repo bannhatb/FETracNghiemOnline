@@ -3,58 +3,37 @@
   <form [formGroup]="formAddQuestion">
     <div class="form-group">
       <div formGroupName="question">
-
-        <label>
-          Nội dung câu hỏi
-          <input type="text" formControlName="questionContent">
+        <label> Nội dung câu hỏi <input type="text" formControlName="questionContent">
         </label>
-        <label>
-          Mô tả
-          <input type="text" formControlName="explaint">
+        <label> Mô tả <input type="text" formControlName="explaint">
         </label>
         <br>
         <div class=" form-group row align-items-center">
-          <label class="col-3" for="">
-            Độ khó:
-          </label>
+          <label class="col-3" for=""> Độ khó: </label>
           <select name="Levels" formControlName="levelID" class="form-control col-9">
             <option *ngFor="let ca of listLevels?.items" [value]="ca.id">{{ca.levelName}}</option>
           </select>
           <div class=" form-group row align-items-center">
-            <label class="col-3" for="">
-              Loại đề thi:
-            </label>
-            <select name="Categories" formControlName="Categories" (change)="newCategory($event)"
-              class="form-control col-9">
+            <label class="col-3" for=""> Loại đề thi: </label>
+            <select name="Categories" formControlName="Categories" (change)="newCategory($event)" class="form-control col-9">
               <option *ngFor="let ca of listCategory?.result.items" [value]="ca.id">{{ca.categoryName}}</option>
             </select>
-            <!-- <div *ngIf="listCategoryChoose" class="d-flex">
-                      <div *ngFor="let chooser of listCateDisplay">{{chooser}} - </div>
-                    </div> -->
+            <!-- <div *ngIf="listCategoryChoose" class="d-flex"><div *ngFor="let chooser of listCateDisplay">{{chooser}} - </div></div> -->
           </div>
-
         </div>
-
       </div>
-
       <br>
-
-      <label for="">
-        Danh sách câu trả lời
-      </label>
+      <label for=""> Danh sách câu trả lời </label>
     </div>
-
     <div *ngIf="answers">
       <div formArrayName="answers">
         <div *ngFor="let answerGroup of answers.controls; let i = index" [formGroupName]="i">
           <div>
             <input type="text" formControlName="answerContent">
             <div *ngIf="answerGroup.value.rightAnswer">
-
               <input type="checkbox" formControlName="rightAnswer" name="rightAnswer" checked=true>
             </div>
             <div *ngIf="!answerGroup.value.rightAnswer">
-
               <input type="checkbox" formControlName="rightAnswer" name="rightAnswer">
             </div>
             <!-- <input  type="radio" formControlName="rightAnswer" > -->
@@ -63,8 +42,7 @@
       </div>
       <button (click)="addInput()">Thêm câu trả lời</button>
     </div>
-    <button type="submit" (click)="addQuestion()" [routerLink]="['/exam/question/question-detail']">Add
-      question</button>
+    <button type="submit" (click)="addQuestion()" [routerLink]="['/exam/question/question-detail']">Add question</button>
   </form>
   <button [routerLink]="['/exam']">Quay lại</button>
 </div>
