@@ -27,7 +27,7 @@ export class UserTestComponent implements OnInit {
 
   }
   CheckPass(){
-    this.activeRoute.params.subscribe((id) =>{
+    this.activeRoute.params.subscribe((id) => {
       this.testId= id.id;
     })
     this.testService.CheckPass(this.testId, this.passWord).subscribe((res)=>{
@@ -39,6 +39,7 @@ export class UserTestComponent implements OnInit {
       }
     })
   }
+
   createTestUser(){
     this.testService.CreateTestUser(this.testId).subscribe((res) =>{
       console.log(res);
@@ -55,7 +56,11 @@ export class UserTestComponent implements OnInit {
       })
     });
   }
-  doTest(){
+  doTest() {
+    // this.activeRoute.params.subscribe((id) => {
+    //   this.testId= id.id;
+    // })
+    // this.createTestUser();
     this.signalRService.startConect();
     console.log(this.signalRService.hubConnection);
     let time = this.result.result.data.time;

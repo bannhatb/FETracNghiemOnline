@@ -1,41 +1,31 @@
-<app-header-v2></app-header-v2>
 <div class="main shadow-lg">
-    <h3 style="text-align: center; font-size: 40px;">Tạo test</h3>
-    <form [formGroup]="formCreateTest">
-          <div class="row align-items-center">
-            <label class="col-3"  >Số lượng câu hỏi:</label>
-            <input class="col-9" type="number" value="0" name="questionCount" formControlName="questionCount">
-          </div>
-          <div class="row align-items-center">
-            <label class="col-3">Thời gian làm bài (phút):</label>
-            <input class="col-9" type="number" value="" name ="time" formControlName="time" min="0" max ="4320">
-          </div>
-          
-          <div class="row align-items-center">
-            <label class="col-3">Bắt đầu</label>
-            <input class="col-9" type="datetime-local"name="startAt" formControlName="startAt">
-          </div>
-          <div class="row align-items-center">
-            <label class="col-3">Kết thúc</label>
-            <input class="col-9" type="datetime-local" name ="endAt" formControlName="endAt">
-          </div>
-          <div class="row align-items-center">
-            <label class="col-3">Mật khẩu ca thi</label>
-            <input class="col-9" type="text" minlength="3" maxlength="30" name ="password" formControlName="password">
-          </div>
-          <div class="row align-items-center">
-            <label class="col-3">Ẩn câu trả lời</label>
-            <input class="col-9" type="checkbox" value="false" name="hideAnswer" formControlName="hideAnswer">
-          </div>
-          <div class="row align-items-center">
-            <label class="col-3" >Đảo thứ tự</label>
-            <input class="col-9" type="checkbox" value="false" name ="shuffleQuestion" formControlName="shuffleQuestion">
-          </div>
-          <div class="d-flex align-items-start justify-content-around">
-            <button type="submit" (click)="submit()" class="btn btn-outline-danger" style="margin-bottom: 10px;">Tạo</button>
-            <a [routerLink]="['/exam/']" routerLinkActive="router-link-active" class="btn btn-outline-danger">Back</a>
-          </div>
-    </form>
-    <app-notification></app-notification>
+  <form [formGroup]="formCreateTest">
+
+    <div class="row align-items-center">
+      <label class="col-3">Bắt đầu</label>
+      <input class="col-9" type="datetime-local" name="startAt" formControlName="startAt">
+    </div>
+    <div class="row align-items-center">
+      <label class="col-3">Kết thúc</label>
+      <input class="col-9" type="datetime-local" name="endAt" formControlName="endAt">
+    </div>
+    <div class="row align-items-center">
+      <label class="col-3">Mật khẩu ca thi</label>
+      <input class="col-9" type="text" minlength="3" maxlength="30" name="password" formControlName="password">
+    </div>
+    <div class="row align-items-center">
+      <label class="col-3">Ẩn câu trả lời</label>
+      <input class="col-9" type="checkbox" value="false" name="hideAnswer" formControlName="hideAnswer">
+    </div>
+    <div class="row align-items-center">
+      <label class="col-3">Đảo thứ tự</label>
+      <input class="col-9" type="checkbox" value="false" name="shuffleQuestion" formControlName="shuffleQuestion">
+    </div>
+    <div class="d-flex align-items-start justify-content-around">
+      <button type="submit" (click)="submit()" class="btn btn-outline-primary" style="margin-bottom: 10px;">Tao</button>
+      <a [routerLink]="['/exam/']" routerLinkActive="router-link-active" class="btn btn-outline-danger">Back</a>
+      <a (click)="dotest()" class="btn btn-outline-danger">Lam bai</a>
+    </div>
+  </form>
+  <app-notification></app-notification>
 </div>
-<app-footer></app-footer>
