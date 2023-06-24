@@ -13,6 +13,7 @@ export class CreateTestComponent implements OnInit {
   formCreateTest : FormGroup;
   examId: number;
   testId: number;
+  test: any;
   constructor(private testService: TestService,
     private activeRoute: ActivatedRoute,
     private fb: FormBuilder,
@@ -29,36 +30,50 @@ export class CreateTestComponent implements OnInit {
     });
 
   }
-  submit(){
-    if(this.formCreateTest.value.questionCount ==0){
-      this.notificationService.error('Không có câu hỏi');
-      return;
-    }
-    this.activeRoute.params.subscribe((id)=>{
-      this.examId = id.id;
-    })
-    let requestModel= {
-      hideAnswer : this.formCreateTest.value.hideAnswer,
-      shuffleQuestion : this.formCreateTest.value.shuffleQuestion,
-      password : this.formCreateTest.value.password,
-      startAt : this.formCreateTest.value.startAt,
-      endAt : this.formCreateTest.value.endAt,
-      examId : this.examId
-    }
-    this.testService.CreateTest(requestModel).subscribe((res)=>{
+  async submit(){
+    try {
+      if(this.formCreateTest.value.questionCount ==0){
+        this.notificationService.error('Không có câu hỏi');
+        return;
+      }
+      this.activeRoute.params.subscribe((id)=>{
+        this.examId = id.id;
+      })
+      let requestModel= {
+        hideAnswer : this.formCreateTest.value.hideAnswer,
+        shuffleQuestion : this.formCreateTest.value.shuffleQuestion,
+        password : this.formCreateTest.value.password,
+        startAt : this.formCreateTest.value.startAt,
+        endAt : this.formCreateTest.value.endAt,
+        examId : this.examId
+      }
+      const res = await this.testService.CreateTest(requestModel).toPromise();
       if(res.message== "00000000"){
         this.notificationService.success("tạo đề thi thành công");
       }
       this.testId = res.result?.data.id;
       console.log(this.testId);
       console.log(res.result?.data)
-    }, (err)=>{
-      console.log(err.error.message);
-    })
+      
+    } catch (error) {
+      
+    }
+    
   }
 
-  dotest() {
-    this.router.navigateByUrl(`/test/do-test/${this.testId}`);
-  }
+  async dotest() {
+    const res = await this.testService.GetTestUser(this.testId,1).toPromise();
+      // console.log(res.result.data.testId);
+    this.test = res;
+    console.log(this.test.result.data.testId);
+    this.router.navigateByUrl(`/test/user-test/${this.test.result.data.testId}`);
 
+  }
+  async createTestAndDoTest() {
+    await this.submit();
+    // setTimeout(() =>{
+
+    // },1000)
+    this.dotest();
+  }
 }

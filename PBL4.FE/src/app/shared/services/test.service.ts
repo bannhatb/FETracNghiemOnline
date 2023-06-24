@@ -28,9 +28,9 @@ export class TestService extends BaseService implements CanActivate {
   GetUserTestStatus(testId: number){
     return this.get(`/api/Test/get-user-test-status?testId=${testId}`);
   }
-  GetTestUser(testId: number, urlQuery: UrlQuery){
-    return this.get(`/api/Test/get-user-test?testId=${testId}&Page=${urlQuery.pageNumber}
-    &PageSize=${urlQuery.pageSize}&Keyword=${urlQuery.keyword}`);
+  GetTestUser(testId: number, number : number){
+    return this.get(`/api/Test/get-user-test?testId=${testId}&Page=${number}
+    &PageSize=${number}&Keyword=${number}`);
   }
   GetOneQuestionUserTest(testId : number, page : number){
     return this.get(`/api/Test/get-one-question-user-test?testId=${testId}&page=${page}`);
