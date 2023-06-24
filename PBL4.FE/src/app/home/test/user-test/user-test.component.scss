@@ -38,6 +38,7 @@ body {
 .container {
     font-family: Arial, Helvetica, sans-serif;
     padding-left: 50px;
+    margin: 100px auto;
 }
 
 fieldset,
@@ -65,6 +66,7 @@ h3 {
     box-shadow: 20px 18px 5px 5px rgba(118, 126, 135, 0.56);
     -webkit-box-shadow: 20px 18px 5px 5px rgba(118, 126, 135, 0.56);
     -moz-box-shadow: 20px 18px 5px 5px rgba(118, 126, 135, 0.56);
+    margin: 0 25%;
 }
 
 .content ul {
@@ -122,11 +124,11 @@ a:hover {
 }
 
 button {
-  width: 10em;
-  height: 2em;
+    width: 10rem;
+    height: 3rem;
 }
 
-
-.start{
-    margin: 50px;
+.start {
+    width: 20%;
+    margin: 0 40%;
 }

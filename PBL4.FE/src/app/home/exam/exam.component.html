@@ -66,11 +66,18 @@
 </table> -->
 
 <div class="container">
-  <div class="bg-gradient-blue d-flex justify-content-between">
+  <<<<<<< HEAD <div class="bg-gradient-blue d-flex justify-content-between">
+    <h2>Danh sách đề thi</h2>
+    <app-search [textSearch]="urlQuery.keyword" (search)="GetListExamCreateCurrentUser($event)"></app-search>
+</div>
+<div class="add">
+  =======
+  <div class="bg-gradient-blue d-flex mx-5 justify-content-between">
     <h2>Danh sách đề thi</h2>
     <app-search [textSearch]="urlQuery.keyword" (search)="GetListExamCreateCurrentUser($event)"></app-search>
   </div>
-  <div class="add">
+  <div class="add mx-5 ">
+    >>>>>>> da53ce762071709ac9964da234f34673ed68030a
 
     <a [routerLink]="['/exam/add-exam/']" routerLinkActive="router-link-active" class="btn btn-success"
       style="margin-left: 5px;">

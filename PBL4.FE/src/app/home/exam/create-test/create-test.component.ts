@@ -58,7 +58,7 @@ export class CreateTestComponent implements OnInit {
   }
 
   dotest() {
-    this.router.navigateByUrl(`/test/user-test/${this.testId}`);
+    this.router.navigateByUrl(`/test/do-test/${this.testId}`);
   }
 
 }

@@ -47,16 +47,24 @@
           <li><a [routerLink]="['/exam/']">EXAM</a></li>
           <li><a [routerLink]="['/admin/user/']">Admin</a></li>
           <li *ngIf="check== false"><a [routerLink]="['/auth/login']">Đăng nhập</a></li>
-          <li>
-            <div *ngIf="check== true" class="dropdown ">
-              <button class="dropbtn">Hi, {{userName?.result.data}}</button>
-              <div class="dropdown-content">
-                <a [routerLink]="['/exam/']">Ngân hàng đề thi</a>
-                <a [routerLink]="['/exam/question/question-detail']">Ngân hàng câu hỏi</a>
-                <a (click)="logout1()">Đăng xuất</a>
-              </div>
-            </div>
+
+
+          <li *ngIf="check == true"> <button class="btn menu-item-has-children text-uppercase">Hi, {{userName?.result.data}}
+
+                <ul class="sub-menu visually-hidden">
+                  <li class="px-3 py-3"><a class="menu-item"  [routerLink]="['/exam/']" >Ngân hàng đề thi</a></li>
+                  <li class="px-3 pb-3"><a class="menu-item " [routerLink]="['/exam/question/question-detail']"  >Ngân hàng câu hỏi</a></li>
+                  <li class="px-3 pb-3"><a class="menu-item"  (click)="logout1()" >Đăng xuất</a></li>
+
+                </ul>
+              </button>
+
           </li>
+
+
+
+
+
 
         </ul>
       </nav>
