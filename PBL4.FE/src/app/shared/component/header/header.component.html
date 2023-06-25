@@ -44,18 +44,6 @@
         <ul class="main-menu nav navbar-nav navbar-right">
           <li><a href="/">Trang chủ</a></li>
           <li><a [routerLink]="['/test/']">TEST</a></li>
-          <li>
-            <button class="btn menu-item-has-children text-uppercase"> MON HOC
-              <ul class="sub-menu visually-hidden">
-                <li class="px-3 py-3"><a class="menu-item" [routerLink]="['/exam/']">Ngân hàng đề thi</a></li>
-                <li class="px-3 pb-3"><a class="menu-item " [routerLink]="['/exam/question/question-detail']">Ngân hàng
-                    câu hỏi</a></li>
-                <li class="px-3 pb-3"><a class="menu-item" (click)="logout1()">Đăng xuất</a></li>
-
-              </ul>
-            </button>
-          </li>
-
           <li><a [routerLink]="['/exam/']">DE THI</a></li>
           <li><a [routerLink]="['/admin/']">QUAN LY</a></li>
           <li *ngIf="check== false"><a [routerLink]="['/auth/login']">Đăng nhập</a></li>
@@ -74,15 +62,10 @@
             </button>
 
           </li>
-
-
-
-
-
-
         </ul>
       </nav>
     </div>
 
   </div>
 </header>
+<div style="margin-top: 60px"></div>
