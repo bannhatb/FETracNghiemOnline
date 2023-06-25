@@ -1,89 +1,32 @@
 <app-header></app-header>
-<!-- <h2>Danh sách đề thi</h2>
-<app-search [textSearch]="urlQuery.keyword" (search)="GetListExamCreateCurrentUser($event)"></app-search> -->
-<!-- <table class="table-bordered table-hover" style="font-weight: 500;">
-    <thead>
-        <tr>
-            <td>Id</td>
-            <td>Tiêu đề</td>
-            <td>Tác giả</td>
-            <td>Công khai</td>
-            <td>Mức độ</td>
-            <td>thời gian làm bài</td>
-            <td>Số lượng câu hỏi</td>
-            <td>Câu hỏi</td>
-            <td>Tạo câu hỏi</td>
-            <td>Tạo bài thi</td>
-            <td>Xóa</td>
-            <td>Bài thi</td>
-        </tr>
-    </thead>
-    <tbody *ngIf="Total == 0">
-        <tr>
-            <td colspan="3">Hiện chưa có bài thi nào</td>
-        </tr>
-    </tbody>
-    <tbody *ngIf="Total >0">
-        <tr *ngFor="let item of ListExam">
-            <td>{{item.id}}</td>
-            <td>{{item.title}}</td>
-            <td>{{item.createBy}}</td>
-            <td>{{item.isPublic}}</td>
-            <td>{{item.levelId}}</td>
-            <td>{{item.time}}</td>
-            <td>{{item.questionCount}}</td>
-            <td>
-                <a [routerLink]="['/exam/exam-detail/'+item.id]" routerLinkActive="router-link-active" class="btn btn-outline-warning">
-                Danh sách
-            </a>
-            </td>
-            <td>
-                <a [routerLink]="['/exam/gen-question/'+item.id]" routerLinkActive="router-link-active" class="btn btn-outline-success">
-                Tạo câu hỏi
-            </a>
-            </td>
-            <td>
-                <a [routerLink]="['/exam/create-test/'+item.id]" routerLinkActive="router-link-active" class="btn btn-outline-secondary">
-                Tạo test
-            </a>
-            </td>
-            <td>
-              <button (click)="deleteExam(item.id)" class="btn btn-outline-danger">
-              Xóa đề thi
-              </button>
-          </td>
-          <td>
-            <a [routerLink]="['/exam/test-exam/'+item.id]" routerLinkActive="router-link-active" class="btn btn-outline-primary">
-            Danh sách
-        </a>
-        </td>
-        </tr>
-    </tbody> -->
-
-<!-- <a [routerLink]="['/exam/add-exam/']" routerLinkActive="router-link-active" class="btn btn-success" style="margin-left: 5px;">
-    Thêm đề thi
-  </a>
-</table> -->
-
 <div class="container">
   <div class="add">
-    <div class="bg-gradient-blue d-flex mx-5 justify-content-between">
-      <h2>Danh sách đề thi</h2>
-      <app-search [textSearch]="urlQuery.keyword" (search)="GetListExamCreateCurrentUser($event)"></app-search>
+    <div class="bg-gradient-blue mx-5">
+      <div class=" d-flex  justify-content-between">
+        <h2>Danh sách đề thi</h2>
+        <app-search [textSearch]="urlQuery.keyword" (search)="GetListExamCreateCurrentUser($event)"></app-search>
+      </div>
+      <div class=" form-group row align-items-center">
+        <label class="col-3" for=""> Loại đề thi: </label>
+        <select name="Categories"  (change)="newCategory($event)" class="form-control col-9">
+          <option value="0">All</option>
+          <option *ngFor="let ca of listCategory?.result.items" [value]="ca.id">{{ca.categoryName}}</option>
+        </select>
+      </div>
     </div>
-    <div class="add mx-5 ">
+    <!-- <div class="add mx-5 ">
       <a [routerLink]="['/exam/add-exam/']" routerLinkActive="router-link-active" class="btn btn-success"
         style="margin-left: 5px;">
         Thêm đề thi
       </a>
       <a class="btn btn-outline-primary" [routerLink]="['/exam/test-create/']" style="margin-left: 5px;">Danh sách cuộc
         thi bạn đã tạo</a>
-    </div>
+    </div> -->
     <div *ngIf="Total == 0">
       <p colspan="3">Hiện chưa có bài thi nào</p>
     </div>
     <div *ngIf="Total > 0" class="d-flex row flex-wrap justify-content-around">
-      <div *ngFor="let item of ListExam">
+      <div *ngFor="let item of ListExam.items">
         <div class="card shadow-lg mb-4" style="width:400px">
           <img class="card-img-top" src="https://storage.tracnghiem.vn/public/trac-nghiem-ngoai-ngu.jpg"
             alt="Card image" style="width:100%">
@@ -126,9 +69,9 @@
                 class="btn btn-outline-secondary">
                 Bắt đầu làm bài
               </a>
-              <button (click)="deleteExam(item.id)" class="btn btn-outline-danger del">
+              <!-- <button (click)="deleteExam(item.id)" class="btn btn-outline-danger del">
                 Xóa đề thi
-              </button>
+              </button> -->
             </div>
           </div>
         </div>

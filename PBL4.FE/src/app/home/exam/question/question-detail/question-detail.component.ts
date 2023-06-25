@@ -29,7 +29,6 @@ export class QuestionDetailComponent implements OnInit {
     this.questionService.GetListQuestionOfUser().subscribe((res)=>{
       this.ListQuestion = res;
       this.ListQuestion.result.data.forEach((val:any)=>{
-        let list: any
         this.questionService.GetQuestionDetail(String(val.id)).subscribe((res)=>{
           this.ListQuestionAnswer.push(res)
           
