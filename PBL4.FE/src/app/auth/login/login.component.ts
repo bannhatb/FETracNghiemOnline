@@ -50,7 +50,7 @@ export class LoginComponent implements OnInit {
         }, () =>{
           console.log(result);
           this.authenticationService.setToken(result.result.token);
-          this.router.navigateByUrl('/test');
+          this.router.navigateByUrl('/');
         });
   }
 }

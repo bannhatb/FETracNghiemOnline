@@ -24,7 +24,6 @@
           <select name="Categories" formControlName="Categories" (change)="newCategory($event)" class="form-control col-9">
             <option *ngFor="let ca of listCategory?.result.items" [value]="ca.id">{{ca.categoryName}}</option>
           </select>
-          <!-- <div *ngIf="listCategoryChoose" class="d-flex"><div *ngFor="let chooser of listCateDisplay">{{chooser}} - </div></div> -->
         </div>
       </div>
     <label for=""> Danh sách câu trả lời </label>
