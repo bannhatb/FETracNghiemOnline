@@ -43,5 +43,10 @@ export class ExamService extends BaseService implements CanActivate{
   DeleteExam(id : number){
     return this.post(`/api/Exam/delete-exam`, id);
   }
-
+  getExambycatalog(cateId: number) : Observable<Response<ResponseDefault>>{ 
+    return this.get(`/api/Exam/get-list-exam-by-category?cateId=${cateId}`)
+  }
+  GetAllcategory(): Observable<Response<ResponseDefault>>{
+    return this.get(`/api/Catelog/get-all-category`)
+  }
 }
