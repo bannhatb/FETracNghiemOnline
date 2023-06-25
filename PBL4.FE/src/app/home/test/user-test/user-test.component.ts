@@ -57,10 +57,6 @@ export class UserTestComponent implements OnInit {
     });
   }
   doTest() {
-    // this.activeRoute.params.subscribe((id) => {
-    //   this.testId= id.id;
-    // })
-    // this.createTestUser();
     this.signalRService.startConect();
     console.log(this.signalRService.hubConnection);
     let time = this.result.result.data.time;

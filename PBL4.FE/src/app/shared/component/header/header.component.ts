@@ -30,8 +30,8 @@ export class HeaderComponent implements OnInit {
     this.router.navigateByUrl(`/login`);
   }
   getUserName(){
-    this.acount.getUserName().subscribe((res)=>{
-      this.userName = res;
+    this.acount.GetUserName().subscribe((res)=>{
+      this.userName = res.result?.data;
       console.log(res);
     }, (err)=>{
       console.log(err.error.message);
