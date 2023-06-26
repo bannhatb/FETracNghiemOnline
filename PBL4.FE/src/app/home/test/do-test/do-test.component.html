@@ -16,7 +16,8 @@
               <span class="font-sm text-secondary ">câu trả lời</span>
             </div>
 
-            <div *ngFor="let answer of result.result.data.questions.listAnswers" class="ml-md-3 ml-sm-3 pl-md-5 pt-sm-0 pt-3" id="options">
+            <div *ngFor="let answer of result.result.data.questions.listAnswers"
+              class="ml-md-3 ml-sm-3 pl-md-5 pt-sm-0 pt-3" id="options">
               <label class="options">{{answer.answerContent}}
                 <div *ngIf="usChoosed(answer.id)">
                   <input type="radio" checked=true value="{{answer.id}}" (change)="chooseOne($event)" name="ans">
@@ -35,7 +36,8 @@
           <div class="question-name font-bold py-2 h5">
             <b>Câu: {{result.result.data.questions.numericalOrder}} {{result.result.data.questions.questionContent}}</b>
           </div>
-          <div *ngFor="let answer of result.result.data.questions.listAnswers" class="ml-md-3 ml-sm-3 pl-md-5 pt-sm-0 pt-3" id="options">
+          <div *ngFor="let answer of result.result.data.questions.listAnswers"
+            class="ml-md-3 ml-sm-3 pl-md-5 pt-sm-0 pt-3" id="options">
             <label class="options">{{answer.answerContent}}
               <div *ngIf="usChoosed(answer.id)">
                 <input type="checkbox" checked=true value="{{answer.id}}" (change)="chooseChange($event)" name="ans">
@@ -53,7 +55,8 @@
   </div>
 </div>
 <div *ngIf="TotalPage > 1" class="center">
-  <app-paging [totalPage]="TotalPage" [currentPage]="urlQuery.pageNumber" (changePage)="ChangePageHandler($event)"></app-paging>
+  <app-paging [totalPage]="TotalPage" [currentPage]="urlQuery.pageNumber"
+    (changePage)="ChangePageHandler($event)"></app-paging>
 </div>
 <div>
   <button class="submitTest" (click)="SubmitTest()">Submit</button>

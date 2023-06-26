@@ -13,10 +13,10 @@ const routes: Routes = [
   {
     path: 'admin',
     loadChildren: () => import('./admin/admin.module').then(m=>m.AdminModule),
-    canActivate: [AuthenTeacherGuard],
-    data: {
-      expectedRole: 'Admin'
-    }
+    // canActivate: [AuthenTeacherGuard],
+    // data: {
+    //   expectedRole: 'Teacher'
+    // }
   },
   {
     path: 'forbident',

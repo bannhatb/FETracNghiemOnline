@@ -24,7 +24,10 @@ export class UserTestComponent implements OnInit {
     private notificationService: NotificationService) { }
 
   ngOnInit(): void {
-
+    this.activeRoute.params.subscribe((id) => {
+      this.testId = id.id;
+    });
+    this.createTestUser();
   }
   CheckPass(){
     this.activeRoute.params.subscribe((id) => {
@@ -42,7 +45,7 @@ export class UserTestComponent implements OnInit {
     })
   }
 
-  createTestUser(){
+  createTestUser() {
     this.testService.CreateTestUser(this.testId).subscribe((res) =>{
       console.log(res);
       this.status = res;
@@ -61,10 +64,6 @@ export class UserTestComponent implements OnInit {
     });
   }
   doTest() {
-    // this.activeRoute.params.subscribe((id) => {
-    //   this.testId= id.id;
-    // })
-    // this.createTestUser();
     this.signalRService.startConect();
     console.log(this.signalRService.hubConnection);
     let time = this.result.result.data.time;

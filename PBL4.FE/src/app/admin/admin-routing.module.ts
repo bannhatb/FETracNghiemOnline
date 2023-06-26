@@ -31,17 +31,17 @@ const router : Routes =[
       {
         path : 'user-detail/:id',
         component : UserDetailComponent,
-        canActivate: [AuthenTeacherGuard],
-        data: {
-          expectedRole: 'Admin'
-        }
+        // canActivate: [AuthenTeacherGuard],
+        // data: {
+        //   expectedRole: 'Teacher'
+        // }
       },
       {
         path : 'all-exam',
         component : AllExamComponent,
         canActivate: [AuthenTeacherGuard],
         data: {
-          expectedRole: 'Admin'
+          expectedRole: 'Teacher'
         }
       },
       {
@@ -49,7 +49,7 @@ const router : Routes =[
         component : QuestionExamComponent,
         canActivate: [AuthenTeacherGuard],
         data: {
-          expectedRole: 'Admin'
+          expectedRole: 'Teacher'
         }
       },
       {
@@ -57,7 +57,7 @@ const router : Routes =[
         component : TestExamComponent,
         canActivate: [AuthenTeacherGuard],
         data: {
-          expectedRole: 'Admin'
+          expectedRole: 'Teacher'
         }
       },
       {
@@ -65,7 +65,7 @@ const router : Routes =[
         component : AnalysisTestComponent,
         canActivate: [AuthenTeacherGuard],
         data: {
-          expectedRole: 'Admin'
+          expectedRole: 'Teacher'
         }
       },
       {
@@ -73,7 +73,7 @@ const router : Routes =[
         component : AllQuestionComponent,
         canActivate: [AuthenTeacherGuard],
         data: {
-          expectedRole: 'Admin'
+          expectedRole: 'Teacher'
         }
       },
     ],
