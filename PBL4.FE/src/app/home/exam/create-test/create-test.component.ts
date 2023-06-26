@@ -24,9 +24,9 @@ export class CreateTestComponent implements OnInit {
     this.formCreateTest = this.fb.group({
       hideAnswer : false,
       shuffleQuestion : false,
-      password : [' '],
-      startAt : [''],
-      endAt : ['']
+      // password : ['123456'],
+      // startAt : ['2023-06-31T03:34:00'],
+      // endAt : ['2024-08-31T03:34:00']
     });
 
   }
@@ -39,12 +39,20 @@ export class CreateTestComponent implements OnInit {
       this.activeRoute.params.subscribe((id)=>{
         this.examId = id.id;
       })
+      // let requestModel= {
+      //   hideAnswer : this.formCreateTest.value.hideAnswer,
+      //   shuffleQuestion : this.formCreateTest.value.shuffleQuestion,
+      //   password : this.formCreateTest.value.password,
+      //   startAt : this.formCreateTest.value.startAt,
+      //   endAt : this.formCreateTest.value.endAt,
+      //   examId : this.examId
+      // }
       let requestModel= {
         hideAnswer : this.formCreateTest.value.hideAnswer,
         shuffleQuestion : this.formCreateTest.value.shuffleQuestion,
-        password : this.formCreateTest.value.password,
-        startAt : this.formCreateTest.value.startAt,
-        endAt : this.formCreateTest.value.endAt,
+        password : "123456",
+        startAt : "2023-09-26T03:29:29.921Z",
+        endAt : "2024-06-26T03:29:29.921Z",
         examId : this.examId
       }
       const res = await this.testService.CreateTest(requestModel).toPromise();
@@ -56,6 +64,7 @@ export class CreateTestComponent implements OnInit {
       console.log(res.result?.data)
       
     } catch (error) {
+      console.log(error);
       
     }
     

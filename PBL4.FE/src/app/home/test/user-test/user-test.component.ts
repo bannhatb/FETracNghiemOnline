@@ -35,6 +35,8 @@ export class UserTestComponent implements OnInit {
         this.notificationService.error("Sai mật khẩu!!");
       }
       if(res.message == ErrorCode.Success){
+        console.log(this.testId);
+        
         this.createTestUser();
       }
     })
@@ -45,7 +47,9 @@ export class UserTestComponent implements OnInit {
       console.log(res);
       this.status = res;
     }, err=>{
-      console.log(err.error.message)
+      console.log(1);
+      
+      console.log(err.error)
     }, ()=>{
       this.testService.GetUserTestStatus(this.testId).subscribe((res)=>{
         this.result = res;
