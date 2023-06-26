@@ -26,7 +26,7 @@ export class ExamComponent implements OnInit {
       window.location.reload();
     });
     // this.GetListExamCreateCurrentUser(this.urlQuery.keyword);
-    this.getAllCategories();
+    this.GetAllExamShow();
   }
   ChangePageHandler(page : number){
     this.urlQuery.pageNumber = page;
@@ -67,7 +67,7 @@ export class ExamComponent implements OnInit {
       console.log(exam.result);
     }
   }
-  async getAllCategories(){
+  async GetAllExamShow(){
     const res = await this.examService.GetAllcategory().toPromise();
     this.listCategory = res
     const exams = await this.adminService.GetAllExam(this.urlQuery).toPromise();

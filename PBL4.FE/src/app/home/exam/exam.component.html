@@ -8,7 +8,7 @@
       </div>
       <div class=" form-group row align-items-center">
         <label class="col-3" for=""> Loại đề thi: </label>
-        <select name="Categories"  (change)="newCategory($event)" class="form-control col-9">
+        <select name="Categories" (change)="newCategory($event)" class="form-control col-9">
           <option value="0">All</option>
           <option *ngFor="let ca of listCategory?.result.items" [value]="ca.id">{{ca.categoryName}}</option>
         </select>

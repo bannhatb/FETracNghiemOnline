@@ -15,13 +15,17 @@ import { AccountService } from '../../services/account.service';
 export class HeaderComponent implements OnInit {
 
   constructor(private checkAuthor: AuthGuard,
-    private authen: AuthenticationService , public router: Router,public acount : AccountService) {
+    private authen: AuthenticationService,
+    public router: Router,
+    public acount: AccountService) {
 
   }
-  userName : any ;
+  userName: any;
+  userId: any;
   ngOnInit(): void {
     this.check = this.checkAuthor.isAuthenticated();
-    this.getUserName()
+    this.getUserName();
+    this.getUserName();
     // console.log(AuthGuard)
   }
   check:boolean = false;
@@ -31,10 +35,20 @@ export class HeaderComponent implements OnInit {
   }
   getUserName(){
     this.acount.GetUserName().subscribe((res)=>{
-      this.userName = res.result?.data;
+      this.userName = res.result?.data.userName;
+      this.userId = res.result?.data.id;
       console.log(res);
     }, (err)=>{
       console.log(err.error.message);
     })
   }
+
+  // GetUserCurrent(){
+  //   this.acount.GetUserDetailCurrent().subscribe((res)=>{
+  //     this.data = res.result?.data
+  //     console.log(this.data.id);
+  //   },(err)=>{
+  //     console.log(err.error.message);
+  //   });
+  // }
 }
