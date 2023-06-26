@@ -12,6 +12,7 @@
 
       </div>
     </div>
+  <form [formGroup] = "formUpdate">
 
     <div class="card-body px-20">
       <h4 class="fw-600 text-grey-700">
@@ -26,7 +27,7 @@
                 Username:
               </label>
 
-              <input class="form-control" type="text" name="" value={{data.userName}}>
+              <input class="form-control" type="text" formControlName="userName" name="" value={{data?.userName}}>
             </div>
           </div>
 
@@ -37,7 +38,7 @@
                 Class:
               </label>
 
-              <input class="form-control" type="text" name="" value={{data.className}} readonly>
+              <input class="form-control" type="text" name="" formControlName="email" value={{data?.className}} readonly>
             </div>
 
           </div>
@@ -51,7 +52,7 @@
                 FirstName:
               </label>
 
-              <input class="form-control" type="text" name="" value={{data.firstName}}>
+              <input class="form-control" type="text" name="" formControlName="firstName" value={{data?.firstName}}>
             </div>
           </div>
 
@@ -62,7 +63,7 @@
                 LastName:
               </label>
 
-              <input class="form-control" type="text" name="" value={{data.lastName}}>
+              <input class="form-control" type="text" name="" formControlName="lastName" value={{data?.lastName}}>
             </div>
           </div>
         </div>
@@ -75,7 +76,7 @@
                 Birthday:
               </label>
 
-              <input class="form-control" type="date" name="" value={{data.dateOfBirth}}>
+              <input class="form-control" type="datetime-local" name="" formControlName="dateOfBirth" value={{data?.dateOfBirth}}>
             </div>
           </div>
 
@@ -86,7 +87,7 @@
                 Gender:
               </label>
 
-              <input class="form-control" type="text" name="" value={{data.gender}}>
+              <input class="form-control" type="text" name="" formControlName="gender" value={{data?.gender}}>
             </div>
           </div>
         </div>
@@ -98,7 +99,7 @@
                 Email:
               </label>
 
-              <input class="form-control" type="text" name="" value={{data.email}} readonly>
+              <input class="form-control" type="text" name="" formControlName="email" value={{data?.email}} readonly>
             </div>
           </div>
 
@@ -111,8 +112,8 @@
 
 
               <ul class="list-inline text-start p-2 rounded border" style="background-color:#e9ecef;">
-                <li *ngFor="let role of data.listRoles" class="list-inline-item ">
-                  {{ role.roleName }}
+                <li *ngFor="let role of data?.listRoles" class="list-inline-item ">
+                  {{ role?.roleName }}
                 </li>
               </ul>
 
@@ -145,8 +146,9 @@
 
       </div>
 
-    </div>
-    <button type="submit" class="btn btn-outline-primary ml-4">Lưu</button>
+      </div>
+      <button type="submit" (click)="UpdateProfile()" class="btn btn-outline-primary ml-4">Lưu</button>
+  </form>
 
   </div>
   <div *ngIf="dem2 > 0" class="p-20">

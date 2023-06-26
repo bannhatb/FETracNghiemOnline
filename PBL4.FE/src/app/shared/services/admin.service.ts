@@ -42,4 +42,7 @@ export class AdminService extends BaseService implements CanActivate{
   GetAllQuestion(){
     return this.get(`/api/Admin/get-all-question`);
   }
+  UpdateProfileUser(form : any) {
+    return this.post(`/api/Account/update-profile-user`,form);
+  }
 }
