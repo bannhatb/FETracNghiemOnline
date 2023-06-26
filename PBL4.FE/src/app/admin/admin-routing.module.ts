@@ -31,10 +31,10 @@ const router : Routes =[
       {
         path : 'user-detail/:id',
         component : UserDetailComponent,
-        canActivate: [AuthenTeacherGuard],
-        data: {
-          expectedRole: 'Teacher'
-        }
+        // canActivate: [AuthenTeacherGuard],
+        // data: {
+        //   expectedRole: 'Teacher'
+        // }
       },
       {
         path : 'all-exam',

@@ -108,6 +108,10 @@
       (changePage)="ChangePageHandlerTeacher($event)"></app-paging>
   </div>
 </div>
+<br>
+<button [routerLink]="['/exam/add-exam/']" routerLinkActive="router-link-active" class="btn btn-outline-primary">
+  Thêm đề thi
+</button>
 
 <app-notification></app-notification>
 <app-footer></app-footer>

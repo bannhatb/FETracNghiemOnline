@@ -9,6 +9,7 @@ import { ExamComponent } from "./exam.component";
 import { GenQuestionComponent } from "./gen-question/gen-question.component";
 import { TestCreateComponent } from "./test-create/test-create.component";
 import { TestExamComponent } from "./test-exam/test-exam.component";
+import { AuthGuard } from "src/app/shared/services/auth.guard";
 
 const router : Routes =[
   {
@@ -29,58 +30,58 @@ const router : Routes =[
       {
         path : 'gen-question/:id',
         component: GenQuestionComponent,
-        canActivate: [AuthenTeacherGuard],
-        data: {
-          expectedRole: 'Teacher'
-        }
+        canActivate: [AuthGuard],
+        // data: {
+        //   expectedRole: 'Teacher'
+        // }
       },
       {
         path : 'create-test/:id',
         component: CreateTestComponent,
-        canActivate: [AuthenTeacherGuard],
-        data: {
-          expectedRole: 'Teacher'
-        }
+        canActivate: [AuthGuard],
+        // data: {
+        //   expectedRole: 'Teacher'
+        // }
       },
       {
         path: 'test-create',
         component: TestCreateComponent,
-        canActivate: [AuthenTeacherGuard],
-        data: {
-          expectedRole: 'Teacher'
-        }
+        canActivate: [AuthGuard],
+        // data: {
+        //   expectedRole: 'Teacher'
+        // }
       },
       {
         path: 'analysis-result/:id',
         component: AnalysisResultComponent,
-        canActivate: [AuthenTeacherGuard],
-        data: {
-          expectedRole: 'Teacher'
-        }
+        canActivate: [AuthGuard],
+        // data: {
+        //   expectedRole: 'Teacher'
+        // }
       },
       {
         path : 'exam-detail/:id',
         component: ExamDetailComponent,
-        canActivate: [AuthenTeacherGuard],
-        data: {
-          expectedRole: 'Teacher'
-        }
+        // canActivate: [AuthGuard],
+        // data: {
+        //   expectedRole: 'Teacher'
+        // }
       },
       {
         path : 'test-exam/:id',
         component: TestExamComponent,
-        canActivate: [AuthenTeacherGuard],
-        data: {
-          expectedRole: 'Teacher'
-        }
+        canActivate: [AuthGuard],
+        // data: {
+        //   expectedRole: 'Teacher'
+        // }
       },
       {
         path: '',
         component : ExamComponent,
-        canActivate: [AuthenTeacherGuard],
-        data: {
-          expectedRole: 'Teacher'
-        }
+        // canActivate: [AuthenTeacherGuard],
+        // data: {
+        //   expectedRole: 'Teacher'
+        // }
       }
     ]
   },

@@ -4,13 +4,14 @@ import { AddQuestionComponent } from "./add-question/add-question.component";
 import { QuestionDetailComponent } from "./question-detail/question-detail.component";
 import { AuthenTeacherGuard } from "src/app/shared/services/authenteacher.guard";
 import { UpdateQuestionComponent } from "./update-question/update-question.component";
+import { QuestionComponent } from "./question.component";
 
 const router : Routes =[
   {
     path: '',
     children: [
       {
-        path: 'question-detail',
+        path: 'question-detail/:id',
         component: QuestionDetailComponent,
         canActivate: [AuthenTeacherGuard],
         data: {
@@ -41,10 +42,14 @@ const router : Routes =[
           expectedRole: 'Teacher'
         }
       },
-      // {
-      //   path: 'question-detail',
-      //   component: QuestionComponent
-      // }
+      {
+        path: '',
+        component: QuestionComponent,
+        canActivate: [AuthenTeacherGuard],
+        data: {
+          expectedRole: 'Teacher'
+        }
+      }
     ]
   },
   {

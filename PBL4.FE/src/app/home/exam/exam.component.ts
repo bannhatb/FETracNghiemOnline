@@ -69,11 +69,11 @@ export class ExamComponent implements OnInit {
   }
   async getAllCategories(){
     const res = await this.examService.GetAllcategory().toPromise();
-    this.listCategory = res 
+    this.listCategory = res
     const exams = await this.adminService.GetAllExam(this.urlQuery).toPromise();
     this.ListExam = exams.result;
     this.Total = 1;
     console.log(this.ListExam);
-    
+
   }
 }

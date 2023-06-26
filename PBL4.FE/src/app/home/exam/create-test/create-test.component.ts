@@ -23,10 +23,7 @@ export class CreateTestComponent implements OnInit {
   ngOnInit(): void {
     this.formCreateTest = this.fb.group({
       hideAnswer : false,
-      shuffleQuestion : false,
-      password : [' '],
-      startAt : [''],
-      endAt : ['']
+      shuffleQuestion : false
     });
 
   }
@@ -42,9 +39,9 @@ export class CreateTestComponent implements OnInit {
       let requestModel= {
         hideAnswer : this.formCreateTest.value.hideAnswer,
         shuffleQuestion : this.formCreateTest.value.shuffleQuestion,
-        password : this.formCreateTest.value.password,
-        startAt : this.formCreateTest.value.startAt,
-        endAt : this.formCreateTest.value.endAt,
+        password : "123456",
+        startAt : "2023-06-31T03:34:00",
+        endAt : "2024-08-31T03:34:00",
         examId : this.examId
       }
       const res = await this.testService.CreateTest(requestModel).toPromise();
